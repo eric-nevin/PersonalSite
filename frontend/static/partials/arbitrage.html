@@ -1,0 +1,74 @@
+<div class='container'>
+	<div class='row'>
+		<!-- Navigation -->
+	    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+	        <div class="container">
+	            <!-- Brand and toggle get grouped for better mobile display -->
+	      		<ul class="nav navbar-nav">
+	      			<li><a href="/">Home</a></li>
+	        		<li><a href="/game">Ball Maze</a></li>
+	        		<li><a href="/arbitrage">Arbitrage Calculator</a></li>
+	        		<li><a href="/documentation">Documentation</a></li>
+	      		</ul>
+
+	            <!-- Collect the nav links, forms, and other content for toggling -->
+	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		            <ul class="nav navbar-nav navbar-right">
+		                <li class="hidden">
+		                    <a href="#page-top"></a>
+		                </li>
+		                <li class="page-scroll">
+		                    <a href="/?scrollTo=portfolio"">Portfolio</a>
+		                </li>
+		                <li class="page-scroll">
+		                    <a href="/?scrollTo=about">About</a>
+		                </li>
+		            </ul>
+		        </div>
+	            <!-- /.navbar-collapse -->
+	        </div>
+	        <!-- /.container-fluid -->
+	    </nav>
+	</div>
+	<div class='row title top'>
+		<div class='col-sm-1'></div>
+		<div class="col-sm-10">
+			<h2>Triangular Arbitrage</h2>
+			<small class='trans'>"Triangular Arbitrage" takes advantage of the imperfections of the currency exchange market. For a simplified example, let's say you have 1 USD, traded for 2 GBP, traded for 2 EUR, traded back for 2 USD. Now in the real world, discrepencies like that do not example. For example, the best you could do today is</small> <small class='trans' id='topProfit'></small><small class='trans'>. So this calculator let's you play with some of these possibilities.</small>
+		</div>
+		<div class='col-sm-1'></div>
+	</div>
+	<br>
+	<div class='row'>
+		<div class="col-sm-1"></div>
+		<div class="col-sm-4">
+			Start Value:
+			<input id='numInput' class="form-control" type='number' min='0' ng-model='data.startValue'>
+			<br>
+			<select multiple class="form-control curSelect" ng-model='data.currencyChoice' ng-change='arbCtrl.displayExchange(data.currencyChoice)'>
+				<option ng-repeat='value in arbCtrl.currency' value='{{value}}' class='conversions'>{{value}}</option>
+			</select>
+			<select multiple class="form-control curSelect" ng-model='data.currencyChoice2' ng-change='arbCtrl.displayExchange2(data.currencyChoice2)'>
+				<option ng-repeat='value in arbCtrl.currency2' value='{{value}}' class='conversions'>{{value}}</option>
+			</select>
+			<select multiple class="form-control curSelect" ng-model='data.currencyChoice3' ng-change='arbCtrl.displayExchange3(data.currencyChoice3)'>
+				<option ng-repeat='value in arbCtrl.currency3' value='{{value}}' class='conversions'>{{value}}</option>
+			</select>
+			<input id='logRate' class="btn btn-secondary btn-lg btn-block" type='button' value='Calculate' ng-click='arbCtrl.calculateRate(data.startValue)'>
+		</div>
+		<div class="col-sm-7">
+			<div id="rateInfo">
+
+			</div>
+		</div>
+	</div>
+	
+	<div class='row'>
+		<div class="col-sm-4"></div>
+		<div class='col-sm-4'>
+			<small>All data received from Fixer.io Api. Data is updated once daily.</small>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+	
+</div>

@@ -1,0 +1,8 @@
+.sidebar{
+  border: 1px solid black;
+  position: fixed;
+  margin-left: 5%
+}
+.toprow{
+  margin-top: 120px;
+}

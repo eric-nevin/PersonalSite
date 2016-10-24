@@ -1,0 +1,25 @@
+#numInput{
+	width: 100%;
+}
+.curSelect{
+	width: 32.5%;
+	display: inline-block;
+}
+.choiceInfo{
+	width: 30%;
+}
+.title{
+	background: #0275d8;
+	color: white;
+}
+body{
+	width: 100%;
+}
+.top{
+	margin-top: 100px;
+	padding-bottom: 20px;
+}
+.trans{
+	opacity: 0.8;
+	color: white;
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app = 'myApp'>
+<head>
+    <title>Eric Nevin</title>
+    <base href="/" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ANGULAR, ANGULAR ROUTE, BOOTSTRAP CSS-->
+    <script src="./library/bower_components/angular/angular.min.js"/></script>
+    <script src="./library/bower_components/angular-route/angular-route.min.js"/></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Theme CSS -->
+    <link href="./static/stylesheets/freelancer.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="library/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+
+    <script src='app.js'></script>
+    <link rel="stylesheet" type="text/css" href="./static/stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="./static/stylesheets/game.css">
+    <link rel="stylesheet" type="text/css" href="./static/stylesheets/arb.css">
+    <link rel="stylesheet" type="text/css" href="./static/stylesheets/doc.css">
+    <script src = "controllers/mainController.js"></script>
+    <script src = "controllers/gameController.js"></script>
+    <script src = "controllers/arbitrageController.js"></script>
+    <script src = "controllers/docController.js"></script>
+
+</head> 
+<body>
+    <div ng-view></div>
+</body>
+</html>

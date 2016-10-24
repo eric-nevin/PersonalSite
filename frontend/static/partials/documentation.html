@@ -1,0 +1,190 @@
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+  		<ul class="nav navbar-nav">
+  			<li><a href="/">Home</a></li>
+    		<li><a href="/game">Ball Maze</a></li>
+    		<li><a href="/arbitrage">Arbitrage Calculator</a></li>
+    		<li><a href="/documentation">Documentation</a></li>
+  		</ul>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li class="page-scroll">
+                    <a href="/?scrollTo=portfolio"">Portfolio</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="/?scrollTo=about">About</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div id='mazeTitle' class='row title top'>
+		<div class='col-sm-1'></div>
+		<div class="col-sm-10">
+			<h2>Ball Maze Doc</h2>
+			<small class='trans'>Below are all of the functions that make up the ball maze game and what they do.</small>
+		</div>
+		<div class='col-sm-1'></div>
+	</div>
+	<br>
+<div class='col-sm-3 sidebar'>
+	<ul id='sideNav'>
+		<li class="page-scroll"><a id='ball' href='#'>Ball Maze</a></li>
+		<ul id='ballMaze'>
+			<li id='update' class='page-scroll'><a href='#'>Update</a></li>
+			<li id='maxSpeed' class='page-scroll'><a href='#'>Max Speed</a></li>
+			<li id='decelerate' class='page-scroll'><a href='#'>Decelerate</a></li>
+			<li id='wallBounce' class='page-scroll'><a href='#'>Wall Bounce</a></li>
+			<li id='keyPresses' class='page-scroll'><a href='#'>Key Presses</a></li>
+		</ul>
+		<li class="page-scroll"><a href='#'>Arbitrage</a></li>
+	</ul>
+</div>
+<div class="col-sm-4">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='updateTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>this</span><span style='color:#308080; '>.</span>update <span style='color:#308080; '>=</span> <span style='color:#200080; font-weight:bold; '>function</span><span style='color:#308080; '>(</span>time<span style='color:#308080; '>,</span> maxspeed<span style='color:#308080; '>,</span> acceleration<span style='color:#308080; '>,</span> deceleration<span style='color:#308080; '>,</span> bounciness<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	<span style='color:#308080; '>.</span><span style='color:#308080; '>.</span><span style='color:#308080; '>.</span><span style='color:#308080; '>.</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		This function is called every 10 milliseconds. It contains the meat of the physics of the game. The functions below are the one's called within the update function.
+	</div>
+</div>
+<div class="col-sm-4">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='maxspeedTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>function</span> maxSpeed<span style='color:#308080; '>(</span>velx<span style='color:#308080; '>,</span> vely<span style='color:#308080; '>,</span> maxspeed<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>speedUp <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		maxspeed <span style='color:#308080; '>+=</span> <span style='color:#008000; '>.5</span><span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>velx <span style='color:#308080; '>></span> maxspeed<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		velx <span style='color:#308080; '>=</span> maxspeed<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>velx <span style='color:#308080; '>&lt;</span> <span style='color:#308080; '>-</span>maxspeed<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		velx <span style='color:#308080; '>=</span> <span style='color:#308080; '>-</span>maxspeed<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>vely <span style='color:#308080; '>></span> maxspeed<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		vely <span style='color:#308080; '>=</span> maxspeed<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>vely <span style='color:#308080; '>&lt;</span> <span style='color:#308080; '>-</span>maxspeed<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		vely <span style='color:#308080; '>=</span> <span style='color:#308080; '>-</span>maxspeed<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>return</span> <span style='color:#308080; '>[</span>velx<span style='color:#308080; '>,</span> vely<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		This function is called to limit the balls max velocity. If the current velocity of the ball on the x or y axis surpasses the max velocity, it is made equal to the max velocity. The "speedUp" variable allows for a powerup to increase max velocity.
+	</div>
+</div>
+<div class="col-sm-4">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='decelerateTitle' class='well'>
+		<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>function</span> decelerate<span style='color:#308080; '>(</span>speedx<span style='color:#308080; '>,</span> speedy<span style='color:#308080; '>,</span> decelRate<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>speedx <span style='color:#308080; '>!=</span> <span style='color:#008c00; '>0</span> <span style='color:#308080; '>||</span> speedy <span style='color:#308080; '>!=</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>speedx <span style='color:#308080; '>!=</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+			speedx <span style='color:#308080; '>*=</span> decelRate<span style='color:#406080; '>;</span>
+		<span style='color:#406080; '>}</span>
+		<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>speedy <span style='color:#308080; '>!=</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+			speedy <span style='color:#308080; '>*=</span> decelRate<span style='color:#406080; '>;</span>
+		<span style='color:#406080; '>}</span>
+		<span style='color:#200080; font-weight:bold; '>return</span> <span style='color:#308080; '>[</span>speedx<span style='color:#308080; '>,</span> speedy<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>return</span> <span style='color:#0f4d75; '>false</span><span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		This function is called to steadily drop the ball's speed. If the ball's speed is anything but zero, it's speed is dropped by "decelRate".
+	</div>
+</div>
+<div class="col-sm-4">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='wallbounceTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>function</span> wallBounce<span style='color:#308080; '>(</span>x<span style='color:#308080; '>,</span> y<span style='color:#308080; '>,</span> speedx<span style='color:#308080; '>,</span> speedy<span style='color:#308080; '>,</span> r<span style='color:#308080; '>,</span> bounciness<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>x <span style='color:#308080; '>+</span> r <span style='color:#308080; '>></span> <span style='color:#308080; '>(</span>document<span style='color:#308080; '>.</span>getElementById<span style='color:#308080; '>(</span><span style='color:#800000; '>'</span><span style='color:#1060b6; '>svg</span><span style='color:#800000; '>'</span><span style='color:#308080; '>)</span><span style='color:#308080; '>.</span>clientWidth<span style='color:#308080; '>)</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		x <span style='color:#308080; '>=</span> <span style='color:#308080; '>(</span>document<span style='color:#308080; '>.</span>getElementById<span style='color:#308080; '>(</span><span style='color:#800000; '>'</span><span style='color:#1060b6; '>svg</span><span style='color:#800000; '>'</span><span style='color:#308080; '>)</span><span style='color:#308080; '>.</span>clientWidth<span style='color:#308080; '>)</span> <span style='color:#308080; '>-</span> r<span style='color:#406080; '>;</span>
+		speedx <span style='color:#308080; '>*=</span> <span style='color:#308080; '>-</span>bounciness<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>x <span style='color:#308080; '>-</span> r <span style='color:#308080; '>&lt;</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		x <span style='color:#308080; '>=</span> r<span style='color:#406080; '>;</span>
+		speedx <span style='color:#308080; '>*=</span> <span style='color:#308080; '>-</span>bounciness<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>y <span style='color:#308080; '>+</span> r <span style='color:#308080; '>></span> <span style='color:#308080; '>(</span>document<span style='color:#308080; '>.</span>getElementById<span style='color:#308080; '>(</span><span style='color:#800000; '>'</span><span style='color:#1060b6; '>svg</span><span style='color:#800000; '>'</span><span style='color:#308080; '>)</span><span style='color:#308080; '>.</span>clientHeight<span style='color:#308080; '>)</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		y <span style='color:#308080; '>=</span> <span style='color:#308080; '>(</span>document<span style='color:#308080; '>.</span>getElementById<span style='color:#308080; '>(</span><span style='color:#800000; '>'</span><span style='color:#1060b6; '>svg</span><span style='color:#800000; '>'</span><span style='color:#308080; '>)</span><span style='color:#308080; '>.</span>clientHeight<span style='color:#308080; '>)</span> <span style='color:#308080; '>-</span> r<span style='color:#406080; '>;</span>
+		speedy <span style='color:#308080; '>*=</span> <span style='color:#308080; '>-</span>bounciness<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>y <span style='color:#308080; '>-</span> r <span style='color:#308080; '>&lt;</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		y <span style='color:#308080; '>=</span> r<span style='color:#406080; '>;</span>
+		speedy <span style='color:#308080; '>*=</span> <span style='color:#308080; '>-</span>bounciness<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>return</span> <span style='color:#308080; '>[</span>x<span style='color:#308080; '>,</span> y<span style='color:#308080; '>,</span> speedx<span style='color:#308080; '>,</span> speedy<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		This function is called to check if the ball has hit an outer border. If the ball's edge is equal to or past the border, it's the location is set equal to the border and its speed is reversed and lessened by the amount of "bounciness" the border has.
+	</div>
+</div>
+<div class="col-sm-4">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='keypressTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>function</span> keyPresses<span style='color:#308080; '>(</span>speedx<span style='color:#308080; '>,</span> speedy<span style='color:#308080; '>,</span> acceleration<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>38</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span> <span style='color:#308080; '>&amp;&amp;</span> keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>39</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		speedy <span style='color:#308080; '>-</span><span style='color:#308080; '>=</span> acceleration<span style='color:#406080; '>;</span>
+		speedx <span style='color:#308080; '>+=</span> acceleration<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span> <span style='color:#200080; font-weight:bold; '>else</span> <span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>38</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span> <span style='color:#308080; '>&amp;&amp;</span> keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>37</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		speedy <span style='color:#308080; '>-</span><span style='color:#308080; '>=</span> acceleration<span style='color:#406080; '>;</span>
+		speedx <span style='color:#308080; '>-</span><span style='color:#308080; '>=</span> acceleration<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span> <span style='color:#200080; font-weight:bold; '>else</span> <span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>40</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span> <span style='color:#308080; '>&amp;&amp;</span> keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>39</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		speedy <span style='color:#308080; '>+=</span> acceleration<span style='color:#406080; '>;</span>
+		speedx <span style='color:#308080; '>+=</span> acceleration<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span> <span style='color:#200080; font-weight:bold; '>else</span> <span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>40</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span> <span style='color:#308080; '>&amp;&amp;</span> keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>37</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		speedy <span style='color:#308080; '>+=</span> acceleration<span style='color:#406080; '>;</span>
+		speedx <span style='color:#308080; '>-</span><span style='color:#308080; '>=</span> acceleration<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span> <span style='color:#200080; font-weight:bold; '>else</span> <span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>39</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span> <span style='color:#308080; '>&amp;&amp;</span> keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>37</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>!=</span> <span style='color:#0f4d75; '>true</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		speedx <span style='color:#308080; '>+=</span> acceleration<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span> <span style='color:#200080; font-weight:bold; '>else</span> <span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>37</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span> <span style='color:#308080; '>&amp;&amp;</span> keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>39</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>!=</span> <span style='color:#0f4d75; '>true</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	 	speedx <span style='color:#308080; '>-</span><span style='color:#308080; '>=</span> acceleration<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span> <span style='color:#200080; font-weight:bold; '>else</span> <span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>38</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span> <span style='color:#308080; '>&amp;&amp;</span> keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>40</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>!=</span> <span style='color:#0f4d75; '>true</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		speedy <span style='color:#308080; '>-</span><span style='color:#308080; '>=</span> acceleration<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span> <span style='color:#200080; font-weight:bold; '>else</span> <span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>40</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#0f4d75; '>true</span> <span style='color:#308080; '>&amp;&amp;</span> keyPressed<span style='color:#308080; '>[</span><span style='color:#008c00; '>38</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>!=</span> <span style='color:#0f4d75; '>true</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		speedy <span style='color:#308080; '>+=</span> acceleration<span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>return</span> <span style='color:#308080; '>[</span>speedx<span style='color:#308080; '>,</span> speedy<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		This function is called to grab the key presses for movemont. If the key for any direction is true, then acceleration is added to the ball's velocity. The if checks with two key presses are used for horizontal movement. 
+	</div>
+</div>
+
+
+
+
