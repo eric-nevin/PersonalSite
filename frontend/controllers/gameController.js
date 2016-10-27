@@ -9,7 +9,6 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	$scope.$on("$destroy", function(){
 	    $interval.cancel(mainInterval);
 	});
-	$('body').css('overflow', 'hidden');
 	var keyPressed = [];
 	var circles = {};
 	var hitpoints = {};
@@ -26,7 +25,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	var speedUp = false;
 	var allowEdit = false;
 	var squareDist = {45: 14.142, 44: 13.902, 43: 13.673, 42: 13.456, 41: 13.25, 40: 13.054, 39: 12.868, 38: 12.69, 37: 12.521, 36: 12.361, 35: 12.208, 34: 12.062, 33: 11.924, 32: 11.792, 31: 11.666, 30: 11.547, 29: 11.434, 28: 11.326, 27: 11.223, 26: 11.126, 25: 11.034, 24: 10.946, 23: 10.864, 22: 10.785, 21: 10.711, 20: 10.642, 19: 10.576, 18: 10.515, 17: 10.457, 16: 10.403, 15: 10.353, 14: 10.306, 13: 10.263, 12: 10.223, 11: 10.187, 10: 10.154, 9: 10.125, 8: 10.098, 7: 10.075, 6: 10.055, 5: 10.038, 4: 10.024, 3: 10.014, 2: 10.006, 1: 10.002, 0: 10};
-
+	
 	function BackSquare(size) {
 		var makeSVG = function(tag, attrs) {
 			var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -121,8 +120,8 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		// 32 high, 60 wide
 		var count = 0;
 		var html_id = 100;
-		var wid = document.getElementById('svg').clientWidth;
-		var hei = document.getElementById('svg').clientHeight;
+		var wid = $('#svg').width();
+		var hei = $('#svg').height();
 		for (var i = 0; i < wid; i = i + size) {
 			for (var j = 0; j < hei; j = j + size) {
 				var type = 0;
@@ -412,14 +411,12 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 			}
 			if (velx > maxspeed) {
 				velx = maxspeed;
-			}
-			if (velx < -maxspeed) {
+			} else if (velx < -maxspeed) {
 				velx = -maxspeed;
 			}
 			if (vely > maxspeed) {
 				vely = maxspeed;
-			}
-			if (vely < -maxspeed) {
+			} else if (vely < -maxspeed) {
 				vely = -maxspeed;
 			}
 			return [velx, vely];
@@ -437,19 +434,17 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 			return false;
 		}
 		function wallBounce(x, y, speedx, speedy, r, bounciness) {
-			if (x + r > (document.getElementById('svg').clientWidth)) {
-				x = (document.getElementById('svg').clientWidth) - r;
+			if (x + r > ($('#svg').width())) {
+				x = ($('#svg').width()) - r;
 				speedx *= -bounciness;
-			}
-			if (x - r < 0) {
+			} else if (x - r < 0) {
 				x = r;
 				speedx *= -bounciness;
 			}
-			if (y + r > (document.getElementById('svg').clientHeight)) {
-				y = (document.getElementById('svg').clientHeight) - r;
+			if (y + r > $('#svg').height()) {
+				y = $('#svg').height() - r;
 				speedy *= -bounciness;
-			}
-			if (y - r < 0) {
+			} else if (y - r < 0) {
 				y = r;
 				speedy *= -bounciness;
 			}
@@ -542,8 +537,8 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 			deaths++;
 			$('#deathCount').html('Deaths: ' + deaths);
 			var el = document.getElementById(html_id);
-			this.info.cx = (document.getElementById('svg').clientWidth) / 4;
-			this.info.cy = (document.getElementById('svg').clientHeight) / 2;
+			this.info.cx = $('#svg').width() / 4;
+			this.info.cy = $('#svg').height() / 2;
 			this.info.velocity.x = 0;
 			this.info.velocity.y = 0;
 			this.info.r = 10;
@@ -725,6 +720,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		}
 		// main loop for all game function. is called from mainInterval
 		this.loop = function() {
+			// var start = new Date().getTime();
 			var count = 0;
 			// runs the class circle update function for each circle in the circles array
 			for (circle in circles) {
@@ -732,13 +728,16 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 				circles[circle].update(1,1, 0.03, 0.997, 0.65);
 				count++;
 			}
+			// var end = new Date().getTime();
+			// var log = end - start;
+			// console.log(log);
 		}
 		// creates the circleId or html_id of the users circle so that its one more than the previous users circle
 		circleId = 0
 		// creates users circle in the middle of the map with its new id
 		// params: x location, y location, radius, id, x velocity, y velocity
 		setTimeout(function() {
-			playground.createNewCircle((document.getElementById('svg').clientWidth) / 4, (document.getElementById('svg').clientHeight) / 2, 10, circleId, 0, 0);	
+			playground.createNewCircle($('#svg').width() / 4, $('#svg').height()/ 2, 10, circleId, 0, 0);	
 		}, 1000);
 	}
 	// end of class playground
@@ -747,6 +746,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	document.addEventListener('keydown', keyDownTextField, false);
 	document.addEventListener('keyup', keyUpTextField, false);
 	function keyDownTextField(e) {
+		e.preventDefault();
 		var keyCode;
 		if (e != undefined) {
 			keyCode = e.keyCode;
@@ -759,6 +759,15 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		keyDownTextField();
 	}
 	// <<<needed for key movements
+	$("#gameInfo").hover(function() {
+        $("#gameInfo").html("<span style='color: black'>Black Square: Regular Barrier| </span><span style='color: grey'>Grey Square: Death!| </span><span style='color: orange'>Orange Square: Extra Bouncy| </span><span style='color: red'>Red Square: Speed Powerup| </span><span style='color: blue'>Blue Square: Size Powerup| </span><span style='color: white; text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;'>Red Outline: Teleport Start| </span><span style='color: white; text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue, 1px 1px 0 blue;'>Blue Outline: Teleport End| </span></div>");
+    	$("#deathCount").hide();
+    });
+    $("#gameInfo").hover(function() {},
+    function(){
+        $("#gameInfo").html('Hover for game info');
+        $("#deathCount").show();
+    });
 	$("svg").on("click", "rect", function() {
 			edit(this);
 	});
