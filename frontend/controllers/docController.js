@@ -8,13 +8,6 @@ function docController($scope, $routeParams, $location) {
     var docCtrl = this;
     $('body').scrollspy({ target: '#my-nav' });
     $('#ballMaze').hide();
-    $("#ball").hover(function() {
-        $("#ballMaze").show();
-    });
-    $("#sideNav").hover(function() {},
-    function(){
-        $("#ballMaze").hide();
-    });
     $("#ball").click(function(event){     
         event.preventDefault();
         var target = $('#mazeTitle');
@@ -22,6 +15,7 @@ function docController($scope, $routeParams, $location) {
         $('html,body').animate({
             scrollTop: scrollToPosition}, 500
         );
+        $("#ballMaze").toggle();
     });
     $("#update").click(function(event){     
         event.preventDefault();
@@ -58,6 +52,22 @@ function docController($scope, $routeParams, $location) {
     $("#keyPresses").click(function(event){     
         event.preventDefault();
         var target = $('#keypressTitle');
+        var scrollToPosition = $(target).offset().top - 100;
+        $('html,body').animate({
+            scrollTop: scrollToPosition}, 500
+        );
+    });
+    $("#sizeChange").click(function(event){     
+        event.preventDefault();
+        var target = $('#sizeChangeTitle');
+        var scrollToPosition = $(target).offset().top - 100;
+        $('html,body').animate({
+            scrollTop: scrollToPosition}, 500
+        );
+    });
+    $("#viewBox").click(function(event){     
+        event.preventDefault();
+        var target = $('#viewboxTitle');
         var scrollToPosition = $(target).offset().top - 100;
         $('html,body').animate({
             scrollTop: scrollToPosition}, 500

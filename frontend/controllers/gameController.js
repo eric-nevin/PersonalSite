@@ -25,7 +25,9 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	var speedUp = false;
 	var allowEdit = false;
 	var squareDist = {45: 14.142, 44: 13.902, 43: 13.673, 42: 13.456, 41: 13.25, 40: 13.054, 39: 12.868, 38: 12.69, 37: 12.521, 36: 12.361, 35: 12.208, 34: 12.062, 33: 11.924, 32: 11.792, 31: 11.666, 30: 11.547, 29: 11.434, 28: 11.326, 27: 11.223, 26: 11.126, 25: 11.034, 24: 10.946, 23: 10.864, 22: 10.785, 21: 10.711, 20: 10.642, 19: 10.576, 18: 10.515, 17: 10.457, 16: 10.403, 15: 10.353, 14: 10.306, 13: 10.263, 12: 10.223, 11: 10.187, 10: 10.154, 9: 10.125, 8: 10.098, 7: 10.075, 6: 10.055, 5: 10.038, 4: 10.024, 3: 10.014, 2: 10.006, 1: 10.002, 0: 10};
-	
+	var tips = [367,309,505,185,617,1162];
+	var tipSpot = 0;
+
 	function BackSquare(size) {
 		var makeSVG = function(tag, attrs) {
 			var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -348,6 +350,47 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 					}
 				}
 			}
+			for(var i = 0; i < tips.length; i++) {
+				var spot = tips[i];
+				var sX = 0;
+				while (spot > 31) {
+					spot -= 32;
+					sX++;
+				}
+				sX *= 20;
+				sX += 10;
+				var sY = spot * 20;
+				sY += 10;
+				var dy = (y - sY),
+				dx = (x - sX);
+				var dist = Math.sqrt((dy * dy) + (dx * dx));
+				if (dist <= (r + squareDist[quadrant])) {
+					if (tipSpot == 0 && i == 0) {
+						$("#tips").html("Gotta straighten out. Grey squares will kill ya!");
+						tipSpot++;
+					}
+					if (tipSpot == 1 && i == 1) {
+						$("#tips").html("SLOW DOWN!!");
+						tipSpot++;
+					}
+					if (tipSpot == 2 && i == 2) {
+						$("#tips").html("These orange barriers are very bouncy");
+						tipSpot++;
+					}
+					if (tipSpot == 3 && i == 3) {
+						$("#tips").html("If you hadn't guessed it: red makes you fast, blue makes you big");
+						tipSpot++;
+					}
+					if (tipSpot == 4 && i == 4) {
+						$("#tips").html("Red bordered squares will teleport you to a blue bordered square. Be careful. Who knows what you'll appear next to");
+						tipSpot++;
+					}
+					if (tipSpot == 5 && i == 5) {
+						$("#tips").html("Almost there!");
+						tipSpot++;
+					}
+				}
+			}
 			return false;
 		}
 		function getPowerup(x,y,r) {
@@ -536,6 +579,33 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		this.death = function() {
 			deaths++;
 			$('#deathCount').html('Deaths: ' + deaths);
+			if (deaths == 1) {
+				$("#tips").html("You died... Dying brings you back the beginning. No checkpoints...");	
+			}
+			if (deaths == 5) {
+				$("#tips").html("Don't worry! You'll figure it out eventually! Maybe..");	
+			}
+			if (deaths == 15) {
+				$("#tips").html("Maybe this game isn't for you..");	
+			}
+			if (deaths == 25) {
+				$("#tips").html("You probably should have quit long ago....");	
+			}
+			if (deaths == 50) {
+				$("#tips").html("Why the hell are you still playing this shitty game??");	
+			}
+			if (deaths == 75) {
+				$("#tips").html("Well.... At least you're persistent....");	
+			}
+			if (deaths == 99) {
+				$("#tips").html("Um. Dude.. Just stop... There's no more fun messages after dying... It's over");	
+			}
+			if (deaths == 100) {
+				$("#tips").html("I lied");	
+			}
+			if (deaths == 101) {
+				$("#tips").html("This is way too many deaths. If anybody actually gets this far, here is a video walkthrough of this game https://www.youtube.com/watch?v=dQw4w9WgXcQ");	
+			}
 			var el = document.getElementById(html_id);
 			this.info.cx = $('#svg').width() / 4;
 			this.info.cy = $('#svg').height() / 2;
@@ -746,9 +816,9 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	document.addEventListener('keydown', keyDownTextField, false);
 	document.addEventListener('keyup', keyUpTextField, false);
 	function keyDownTextField(e) {
-		e.preventDefault();
 		var keyCode;
 		if (e != undefined) {
+			e.preventDefault();
 			keyCode = e.keyCode;
 			keyPressed[keyCode] = true;
 		}
@@ -760,7 +830,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	}
 	// <<<needed for key movements
 	$("#gameInfo").hover(function() {
-        $("#gameInfo").html("<span style='color: black'>Black Square: Regular Barrier| </span><span style='color: grey'>Grey Square: Death!| </span><span style='color: orange'>Orange Square: Extra Bouncy| </span><span style='color: red'>Red Square: Speed Powerup| </span><span style='color: blue'>Blue Square: Size Powerup| </span><span style='color: white; text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;'>Red Outline: Teleport Start| </span><span style='color: white; text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue, 1px 1px 0 blue;'>Blue Outline: Teleport End| </span></div>");
+        $("#gameInfo").html("<span style='color: black'>Black Square: Regular Barrier| </span><span style='color: grey'>Grey Square: Death!| </span><span style='color: orange'>Orange Square: Extra Bouncy| </span><span style='color: red'>Red Square: Speed Powerup| </span><span style='color: blue'>Blue Square: Size Powerup| </span><span style='color: white; text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;'>Red Outline: Teleport Start| </span><span style='color: white; text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue, 1px 1px 0 blue;'>Blue Outline: Teleport End </span></div>");
     	$("#deathCount").hide();
     });
     $("#gameInfo").hover(function() {},
@@ -779,6 +849,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		console.log("Bouncy: " + bouncyBarrier);
 		console.log("In: " + teleportIn);
 		console.log("Out: " + teleportOut);
+		console.log("Tips: " + tips);
 	});
 	$('#edit').on("click", function() {
 		if (allowEdit == false) {
@@ -862,6 +933,16 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 				}
 			}
 			if (type == 0) {
+				for (var i = 0; i < tips.length; i++) {
+					if (tips[i] == id) {
+						var index = tips.indexOf(id);
+						tips.splice(index, 1);
+						type = 8;
+						break;
+					}
+				}
+			}
+			if (type == 0) {
 				barrier.push(id);
 				back.setAttribute('style', 'fill: black; fill-opacity: 1');
 			}
@@ -890,6 +971,10 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 				back.setAttribute('style', 'fill: white; fill-opacity: 0; stroke: blue; stroke-width: 1;')
 			}
 			if (type == 7) {
+				tips.push(id);
+				back.setAttribute('style', 'fill: green; fill-opacity: 1; stroke-width: .3; stroke: lightgrey');
+			}
+			if (type == 8) {
 				back.setAttribute('style', 'fill: white; fill-opacity: 0; stroke-width: .3; stroke: lightgrey');
 			}
 		}
