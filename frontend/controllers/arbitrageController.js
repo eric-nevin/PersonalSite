@@ -5,7 +5,6 @@
     .controller('arbitrageController', arbitrageController);
 
 function arbitrageController($scope, $routeParams, $location) {
-	$('body').css('overflow', 'scroll');
 	var arbCtrl = this;
 	var associative = {};
 	var profitable = [];

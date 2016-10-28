@@ -6,7 +6,6 @@
 
 function mainController($scope, $routeParams, $location) {
     var mainCtrl = this;
-    $('body').css('overflow', 'scroll');
     if ($routeParams.scrollTo != undefined) {
     	if ($routeParams.scrollTo == 'portfolio') {	    	 
 		    var target = $('#portfolioTitle');

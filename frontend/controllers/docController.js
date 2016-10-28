@@ -6,7 +6,6 @@
 
 function docController($scope, $routeParams, $location) {
     var docCtrl = this;
-    $('body').css('overflow', 'scroll');
     $('body').scrollspy({ target: '#my-nav' });
     $('#ballMaze').hide();
     $("#ball").hover(function() {
