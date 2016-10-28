@@ -746,9 +746,9 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	document.addEventListener('keydown', keyDownTextField, false);
 	document.addEventListener('keyup', keyUpTextField, false);
 	function keyDownTextField(e) {
-		e.preventDefault();
 		var keyCode;
 		if (e != undefined) {
+			e.preventDefault();
 			keyCode = e.keyCode;
 			keyPressed[keyCode] = true;
 		}
