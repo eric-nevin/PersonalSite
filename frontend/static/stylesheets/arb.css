@@ -23,3 +23,6 @@ body{
 	opacity: 0.8;
 	color: white;
 }
+#loading{
+	max-height: 10px;
+}

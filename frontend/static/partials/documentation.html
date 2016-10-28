@@ -26,27 +26,31 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div id='mazeTitle' class='row title top'>
-		<div class='col-sm-1'></div>
-		<div class="col-sm-10">
-			<h2>Ball Maze Doc</h2>
-			<small class='trans'>Below are all of the functions that make up the ball maze game and what they do.</small>
-		</div>
-		<div class='col-sm-1'></div>
-	</div>
-	<br>
 <div class='col-sm-3 sidebar'>
 	<ul id='sideNav'>
 		<li class="page-scroll"><a id='ball' href='#'>Ball Maze</a></li>
 		<ul id='ballMaze'>
 			<li id='update' class='page-scroll'><a href='#'>Update</a></li>
-			<li id='maxSpeed' class='page-scroll'><a href='#'>Max Speed</a></li>
-			<li id='decelerate' class='page-scroll'><a href='#'>Decelerate</a></li>
-			<li id='wallBounce' class='page-scroll'><a href='#'>Wall Bounce</a></li>
-			<li id='keyPresses' class='page-scroll'><a href='#'>Key Presses</a></li>
+			<ul id='udpateFunctions'>
+				<li id='maxSpeed' class='page-scroll'><a href='#'>Max Speed</a></li>
+				<li id='decelerate' class='page-scroll'><a href='#'>Decelerate</a></li>
+				<li id='wallBounce' class='page-scroll'><a href='#'>Wall Bounce</a></li>
+				<li id='keyPresses' class='page-scroll'><a href='#'>Key Presses</a></li>
+				<li id='sizeChange' class='page-scroll'><a href='#'>Size Change</a></li>
+				<li id='viewBox' class='page-scroll'><a href='#'>Teleport Animation</a></li>
+			</ul>
 		</ul>
 		<li class="page-scroll"><a href='#'>Arbitrage</a></li>
 	</ul>
+</div>
+<br>
+<div id='mazeTitle' class='row top'>
+	<div class='col-sm-4'></div>
+	<div class="col-sm-8 title">
+		<h2>Ball Maze Doc</h2>
+		<small class='trans'>Below are all of the functions that make up the ball maze game and what they do.</small>
+	</div>
+<div class='col-sm-1'></div>
 </div>
 <div class="col-sm-4">
 </div>
@@ -182,6 +186,83 @@
 	</div>
 	<div class='col-sm-3'>
 		This function is called to grab the key presses for movemont. If the key for any direction is true, then acceleration is added to the ball's velocity. The if checks with two key presses are used for horizontal movement. 
+	</div>
+</div>
+<div class="col-sm-4">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='sizeChangeTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>function</span> sizeChange<span style='color:#308080; '>(</span>change<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> userBall <span style='color:#308080; '>=</span> document<span style='color:#308080; '>.</span>getElementById<span style='color:#308080; '>(</span>html_id<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>change <span style='color:#308080; '>==</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+		userBall<span style='color:#308080; '>.</span>setAttribute<span style='color:#308080; '>(</span><span style='color:#800000; '>'</span><span style='color:#1060b6; '>r</span><span style='color:#800000; '>'</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>20</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span> <span style='color:#200080; font-weight:bold; '>else</span> <span style='color:#406080; '>{</span>
+		userBall<span style='color:#308080; '>.</span>setAttribute<span style='color:#308080; '>(</span><span style='color:#800000; '>'</span><span style='color:#1060b6; '>r</span><span style='color:#800000; '>'</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>10</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		This function checks if the inputted variable is active. If it is, it makes the ball larger. The variable is activated when the user passes over a blue square.
+	</div>
+</div>
+<div class="col-sm-4">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='viewboxTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>function</span> viewboxTransition<span style='color:#308080; '>(</span>x<span style='color:#308080; '>,</span> y<span style='color:#308080; '>,</span> x2<span style='color:#308080; '>,</span> y2<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> tranX <span style='color:#308080; '>=</span> x <span style='color:#308080; '>-</span> x2<span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> tranY <span style='color:#308080; '>=</span> y <span style='color:#308080; '>-</span> y2<span style='color:#406080; '>;</span>
+	tranX <span style='color:#308080; '>/=</span> <span style='color:#008c00; '>300</span><span style='color:#406080; '>;</span>
+	tranY <span style='color:#308080; '>/=</span> <span style='color:#008c00; '>300</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> newX <span style='color:#308080; '>=</span> x<span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> newY <span style='color:#308080; '>=</span> y<span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> view <span style='color:#308080; '>=</span> document<span style='color:#308080; '>.</span>getElementById<span style='color:#308080; '>(</span><span style='color:#800000; '>"</span><span style='color:#1060b6; '>svg</span><span style='color:#800000; '>"</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> i <span style='color:#308080; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> tranInterval <span style='color:#308080; '>=</span> <span style='color:#200080; font-weight:bold; '>setInterval</span><span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>function</span><span style='color:#308080; '>(</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>i <span style='color:#308080; '>></span> <span style='color:#008c00; '>299</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+			<span style='color:#200080; font-weight:bold; '>clearInterval</span><span style='color:#308080; '>(</span>tranInterval<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+		<span style='color:#406080; '>}</span>
+		newX <span style='color:#308080; '>-</span><span style='color:#308080; '>=</span> tranX<span style='color:#406080; '>;</span>
+		newY <span style='color:#308080; '>-</span><span style='color:#308080; '>=</span> tranY<span style='color:#406080; '>;</span>
+		i<span style='color:#308080; '>++</span><span style='color:#406080; '>;</span>
+		view<span style='color:#308080; '>.</span>setAttribute<span style='color:#308080; '>(</span><span style='color:#800000; '>'</span><span style='color:#1060b6; '>viewBox</span><span style='color:#800000; '>'</span><span style='color:#308080; '>,</span> newX <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> newY <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> 300 300</span><span style='color:#800000; '>"</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>10</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		This function is called to move the view box when the users ball passes through a teleport.
+	</div>
+</div>
+<div id='arbTitle' class='row top'>
+	<div class='col-sm-4'></div>
+	<div class="col-sm-8 title">
+		<h2>Arbitration Calculator Doc</h2>
+		<small class='trans'>Below are all of the functions that make up the arbitrage calculator and what they do.</small>
+	</div>
+<div class='col-sm-1'></div>
+</div>
+<div class="col-sm-4">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='jsonCallTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>for</span> <span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>var</span> i <span style='color:#308080; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#406080; '>;</span> i <span style='color:#308080; '>&lt;</span> arbCtrl<span style='color:#308080; '>.</span>currency<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>length</span><span style='color:#406080; '>;</span> i<span style='color:#308080; '>++</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	$<span style='color:#308080; '>.</span>getJSON<span style='color:#308080; '>(</span><span style='color:#800000; '>"</span><span style='color:#1060b6; '>http://api.fixer.io/latest?base=</span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>currency<span style='color:#308080; '>[</span>i<span style='color:#308080; '>]</span><span style='color:#308080; '>,</span> <span style='color:#200080; font-weight:bold; '>function</span><span style='color:#308080; '>(</span>data<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+		success<span style='color:#406080; '>:</span> pushValues<span style='color:#308080; '>(</span>data<span style='color:#308080; '>.</span>rates<span style='color:#308080; '>,</span> data<span style='color:#308080; '>.</span>base<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		Initial series of JSON calls to fixer.io api. There is one call for every available currency.
 	</div>
 </div>
 
