@@ -19,7 +19,6 @@ function docController($scope, $routeParams, $location) {
     $('body').scrollspy({ target: '.sideNavSpy', offset: 100 });
     $('.sideNavSpy').on('activate.bs.scrollspy', function (target) {
         var tar = target.target.id;
-        //  ball, update, maxSpeed, decelerate, wallBounce, keyPresses, sizeChange, viewBox
         if (tar == 'topHide') {
             $('#ballMaze').hide();
             $('#ball').css("background-color", "transparent");
@@ -79,8 +78,45 @@ function docController($scope, $routeParams, $location) {
             $("#apiCall").css("background-color", "transparent");
         }
         else if (tar == 'apiCall') {
+            $('#ballMaze').hide();
+            $('#arbDoc').show();
             $('#arb').css("background-color", "transparent");
             $("#apiCall").css("background-color", "#dddddd");
+            $('#pushValues').css("background-color", "transparent");
+        }
+        else if (tar == 'pushValues') {
+            $('#ballMaze').hide();
+            $('#arbDoc').show();
+            $('#apiCall').css("background-color", "transparent");
+            $("#pushValues").css("background-color", "#dddddd");
+            $('#triang').css("background-color", "transparent");
+        }
+        else if (tar == 'triang') {
+            $('#ballMaze').hide();
+            $('#arbDoc').show();
+            $('#pushValues').css("background-color", "transparent");
+            $("#triang").css("background-color", "#dddddd");
+            $('#sort').css("background-color", "transparent");
+        }
+        else if (tar == 'sort') {
+            $('#ballMaze').hide();
+            $('#arbDoc').show();
+            $('#triang').css("background-color", "transparent");
+            $("#sort").css("background-color", "#dddddd");
+            $('#exchange').css("background-color", "transparent");
+        }
+        else if (tar == 'exchange') {
+            $('#ballMaze').hide();
+            $('#arbDoc').show();
+            $('#sort').css("background-color", "transparent");
+            $("#exchange").css("background-color", "#dddddd");
+            $('#calc').css("background-color", "transparent");
+        }
+        else if (tar == 'calc') {
+            $('#ballMaze').hide();
+            $('#arbDoc').show();
+            $('#exchange').css("background-color", "transparent");
+            $("#calc").css("background-color", "#dddddd");
         }
     })
     $('#ballMaze').hide();

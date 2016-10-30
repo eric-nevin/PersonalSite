@@ -38,7 +38,7 @@
 		</div>
 		<div class='col-sm-1'></div>
 	</div>
-	<div id='sideFix' class='col-sm-3 sidebar sideNavSpy'>
+	<div id='sideFix' class='col-sm-2 sidebar sideNavSpy'>
 	<ul id='sideNav' class='nav'>
 		<li class="hidden" id='topHide'><a href="#page-hide"></a></li>
 		<li class="page-scroll" id='ball'><a id='ball' href='#mazeTitle'>Ball Maze</a></li>
@@ -55,19 +55,24 @@
 		</ul>
 		<li id='arb' class="page-scroll"><a href='#arbTitle'>Arbitrage</a></li>
 		<ul id='arbDoc'>
-			<li id='apiCall' class='page-scroll'><a href='#apiCallTitle'>Update</a></li>
+			<li id='apiCall' class='page-scroll'><a href='#apiCallTitle'>API Call</a></li>
+			<li id='pushValues' class='page-scroll'><a href='#pushValuesTitle'>Helper Function</a></li>
+			<li id='triang' class='page-scroll'><a href='#triangTitle'>Triangular Arbitrage</a></li>
+			<li id='sort' class='page-scroll'><a href='#sortTitle'>Sort Helper</a></li>
+			<li id='exchange' class='page-scroll'><a href='#exchangeTitle'>Display Helper</a></li>
+			<li id='calc' class='page-scroll'><a href='#calcTitle'>Calculate Arbitrage</a></li>
 		</ul>
 	</ul>
 </div>
 <div id='mazeTitle' class='row topDoc'>
-	<div class='col-sm-4'></div>
+	<div class='col-sm-3'></div>
 	<div class="col-sm-8 titleDoc">
 		<h2>Ball Maze Doc</h2>
 		<small class='trans'>Below are all of the functions that make up the ball maze game and what they do.</small>
 	</div>
 <div class='col-sm-1'></div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 </div>
 <div class='row'>
 	<div class='col-sm-4'>
@@ -82,7 +87,7 @@
 		This function is called every 10 milliseconds. It contains the meat of the physics of the game. The functions below are the one's called within the update function.
 	</div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 </div>
 <div class='row'>
 	<div class='col-sm-4'>
@@ -112,7 +117,7 @@
 		This function is called to limit the balls max velocity. If the current velocity of the ball on the x or y axis surpasses the max velocity, it is made equal to the max velocity. The "speedUp" variable allows for a powerup to increase max velocity.
 	</div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 </div>
 <div class='row'>
 	<div class='col-sm-4'>
@@ -136,7 +141,7 @@
 		This function is called to steadily drop the ball's speed. If the ball's speed is anything but zero, it's speed is dropped by "decelRate".
 	</div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 </div>
 <div class='row'>
 	<div class='col-sm-4'>
@@ -167,7 +172,7 @@
 		This function is called to check if the ball has hit an outer border. If the ball's edge is equal to or past the border, it's the location is set equal to the border and its speed is reversed and lessened by the amount of "bounciness" the border has.
 	</div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 </div>
 <div class='row'>
 	<div class='col-sm-4'>
@@ -203,7 +208,7 @@
 		This function is called to grab the key presses for movemont. If the key for any direction is true, then acceleration is added to the ball's velocity. The if checks with two key presses are used for horizontal movement. 
 	</div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 </div>
 <div class='row'>
 	<div class='col-sm-4'>
@@ -223,7 +228,7 @@
 		This function checks if the inputted variable is active. If it is, it makes the ball larger. The variable is activated when the user passes over a blue square.
 	</div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 </div>
 <div class='row'>
 	<div class='col-sm-4'>
@@ -256,14 +261,14 @@
 	</div>
 </div>
 <div id='arbTitle' class='row nontop'>
-	<div class='col-sm-4'></div>
+	<div class='col-sm-3'></div>
 	<div class="col-sm-8 titleDoc">
 		<h2>Arbitration Calculator Doc</h2>
 		<small class='trans'>Below are all of the functions that make up the arbitrage calculator and what they do.</small>
 	</div>
 <div class='col-sm-1'></div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-3">
 </div>
 <div class='row'>
 	<div class='col-sm-4'>
@@ -278,6 +283,186 @@
 	</div>
 	<div class='col-sm-3'>
 		Initial series of JSON calls to fixer.io api. There is one call for every available currency.
+	</div>
+</div>
+<div class="col-sm-3">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='pushValuesTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>function</span> pushValues<span style='color:#308080; '>(</span>values<span style='color:#308080; '>,</span> base<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+	associative<span style='color:#308080; '>[</span>base<span style='color:#308080; '>]</span> <span style='color:#308080; '>=</span> values<span style='color:#406080; '>;</span>
+	associative<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>length</span><span style='color:#308080; '>++</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>if</span><span style='color:#308080; '>(</span><span style='color:#007d45; '>Object</span><span style='color:#308080; '>.</span>keys<span style='color:#308080; '>(</span>associative<span style='color:#308080; '>)</span><span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>length</span> <span style='color:#308080; '>></span> <span style='color:#008c00; '>32</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+		triangularArb<span style='color:#308080; '>(</span>associative<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		Helper function called everytime one of the API calls goes through. Adds new values to an obejct. Once all of the API calls are done, it calls the Triangular Arbitrage function.
+	</div>
+</div>
+<div class="col-sm-3">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='triangTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>function</span> triangularArb<span style='color:#308080; '>(</span>exchanges<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> largest<span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> largestName<span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>for</span><span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>var</span> key <span style='color:#200080; font-weight:bold; '>in</span> exchanges<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+		<span style='color:#200080; font-weight:bold; '>for</span><span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>var</span> key2 <span style='color:#200080; font-weight:bold; '>in</span> exchanges<span style='color:#308080; '>[</span>key<span style='color:#308080; '>]</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+			<span style='color:#200080; font-weight:bold; '>for</span><span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>var</span> key3 <span style='color:#200080; font-weight:bold; '>in</span> exchanges<span style='color:#308080; '>[</span>key2<span style='color:#308080; '>]</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+				<span style='color:#200080; font-weight:bold; '>if</span><span style='color:#308080; '>(</span>key3 <span style='color:#308080; '>!=</span> key<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+					<span style='color:#200080; font-weight:bold; '>var</span> arb <span style='color:#308080; '>=</span> exchanges<span style='color:#308080; '>[</span>key<span style='color:#308080; '>]</span><span style='color:#308080; '>[</span>key2<span style='color:#308080; '>]</span> <span style='color:#308080; '>*</span> exchanges<span style='color:#308080; '>[</span>key2<span style='color:#308080; '>]</span><span style='color:#308080; '>[</span>key3<span style='color:#308080; '>]</span> <span style='color:#308080; '>*</span> exchanges<span style='color:#308080; '>[</span>key3<span style='color:#308080; '>]</span><span style='color:#308080; '>[</span>key<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+					<span style='color:#200080; font-weight:bold; '>var</span> final <span style='color:#308080; '>=</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>Final 1 </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> key <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> to </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> key2 <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> to </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> key3 <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> back to </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span>  arb <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> key<span style='color:#406080; '>;</span>
+					<span style='color:#200080; font-weight:bold; '>var</span> profKey <span style='color:#308080; '>=</span> key <span style='color:#308080; '>+</span> key2 <span style='color:#308080; '>+</span> key3 <span style='color:#308080; '>+</span> key<span style='color:#406080; '>;</span>
+					<span style='color:#200080; font-weight:bold; '>if</span><span style='color:#308080; '>(</span>arb <span style='color:#308080; '>></span> <span style='color:#008c00; '>1</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+						profitable<span style='color:#308080; '>[</span>profKey<span style='color:#308080; '>]</span> <span style='color:#308080; '>=</span> arb<span style='color:#406080; '>;</span>
+						largest <span style='color:#308080; '>=</span> arb<span style='color:#406080; '>;</span>
+						largestName <span style='color:#308080; '>=</span> profKey<span style='color:#406080; '>;</span>
+				        <span style='color:#406080; '>}</span>
+				<span style='color:#406080; '>}</span>	
+			<span style='color:#406080; '>}</span>
+
+		<span style='color:#406080; '>}</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>for</span><span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>var</span> key4 <span style='color:#200080; font-weight:bold; '>in</span> profitable<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+		<span style='color:#200080; font-weight:bold; '>if</span><span style='color:#308080; '>(</span>profitable<span style='color:#308080; '>[</span>key4<span style='color:#308080; '>]</span> <span style='color:#308080; '>></span> largest<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+			largest <span style='color:#308080; '>=</span> profitable<span style='color:#308080; '>[</span>key4<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+			largestName <span style='color:#308080; '>=</span> key4<span style='color:#406080; '>;</span>
+		<span style='color:#406080; '>}</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> profit <span style='color:#308080; '>=</span> <span style='color:#308080; '>(</span><span style='color:#308080; '>(</span>largest <span style='color:#308080; '>*</span> <span style='color:#008c00; '>1000000</span><span style='color:#308080; '>)</span> <span style='color:#308080; '>-</span> <span style='color:#008c00; '>1000000</span><span style='color:#308080; '>)</span><span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>toFixed</span><span style='color:#308080; '>(</span><span style='color:#008c00; '>2</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> base <span style='color:#308080; '>=</span> largestName<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>slice</span><span style='color:#308080; '>(</span><span style='color:#008c00; '>0</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>3</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> first <span style='color:#308080; '>=</span> largestName<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>slice</span><span style='color:#308080; '>(</span><span style='color:#008c00; '>3</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>6</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> second <span style='color:#308080; '>=</span> largestName<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>slice</span><span style='color:#308080; '>(</span><span style='color:#008c00; '>6</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>9</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> USDConvert <span style='color:#308080; '>=</span> exchanges<span style='color:#308080; '>[</span><span style='color:#800000; '>"</span><span style='color:#1060b6; '>USD</span><span style='color:#800000; '>"</span><span style='color:#308080; '>]</span><span style='color:#308080; '>[</span>base<span style='color:#308080; '>]</span> <span style='color:#308080; '>*</span> exchanges<span style='color:#308080; '>[</span>base<span style='color:#308080; '>]</span><span style='color:#308080; '>[</span><span style='color:#800000; '>"</span><span style='color:#1060b6; '>USD</span><span style='color:#800000; '>"</span><span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> topProfit <span style='color:#308080; '>=</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>for every 1 million </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> base <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> invested, you would profit </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> profit <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> base <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>'s! WHOA that's exciting!! Convert </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> base <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> to </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> first <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> then to </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> second <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> then back to </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> base<span style='color:#406080; '>;</span>
+	$<span style='color:#308080; '>(</span><span style='color:#800000; '>'</span><span style='color:#1060b6; '>#topProfit</span><span style='color:#800000; '>'</span><span style='color:#308080; '>)</span><span style='color:#308080; '>.</span>html<span style='color:#308080; '>(</span>topProfit<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	associativeSort<span style='color:#308080; '>(</span>profitable<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		This is a series of calculations that concludes in finding the best case of triangular arbitrage and printing it at the top of the page.
+	</div>
+</div>
+<div class="col-sm-3">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='sortTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>function</span> associativeSort<span style='color:#308080; '>(</span>object<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> objectKeys <span style='color:#308080; '>=</span> <span style='color:#308080; '>[</span><span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> objectVals <span style='color:#308080; '>=</span> <span style='color:#308080; '>[</span><span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> sorted <span style='color:#308080; '>=</span> <span style='color:#308080; '>[</span><span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>for</span><span style='color:#308080; '>(</span>key <span style='color:#200080; font-weight:bold; '>in</span> object<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+		objectKeys<span style='color:#308080; '>.</span>push<span style='color:#308080; '>(</span>key<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+		objectVals<span style='color:#308080; '>.</span>push<span style='color:#308080; '>(</span>object<span style='color:#308080; '>[</span>key<span style='color:#308080; '>]</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	<span style='color:#406080; '>}</span>
+	<span style='color:#200080; font-weight:bold; '>for</span><span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>var</span> i <span style='color:#308080; '>=</span> <span style='color:#008c00; '>1</span><span style='color:#406080; '>;</span> i <span style='color:#308080; '>&lt;</span> objectVals<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>length</span><span style='color:#406080; '>;</span> i<span style='color:#308080; '>++</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+		<span style='color:#200080; font-weight:bold; '>if</span><span style='color:#308080; '>(</span>objectVals<span style='color:#308080; '>[</span>i<span style='color:#308080; '>]</span> <span style='color:#308080; '>></span> objectVals<span style='color:#308080; '>[</span>i <span style='color:#308080; '>-</span> <span style='color:#008c00; '>1</span><span style='color:#308080; '>]</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+			<span style='color:#200080; font-weight:bold; '>var</span> temp <span style='color:#308080; '>=</span> objectVals<span style='color:#308080; '>[</span>i<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+			<span style='color:#200080; font-weight:bold; '>var</span> temp2 <span style='color:#308080; '>=</span> objectKeys<span style='color:#308080; '>[</span>i<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+			<span style='color:#200080; font-weight:bold; '>var</span> k <span style='color:#308080; '>=</span> i <span style='color:#308080; '>-</span> <span style='color:#008c00; '>1</span><span style='color:#406080; '>;</span>
+			<span style='color:#200080; font-weight:bold; '>while</span><span style='color:#308080; '>(</span>objectVals<span style='color:#308080; '>[</span>k<span style='color:#308080; '>]</span> <span style='color:#308080; '>&lt;</span> temp <span style='color:#308080; '>&amp;&amp;</span> k <span style='color:#308080; '>>=</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+	        	objectVals<span style='color:#308080; '>[</span>k<span style='color:#308080; '>+</span><span style='color:#008c00; '>1</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>=</span> objectVals<span style='color:#308080; '>[</span>k<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	        	objectKeys<span style='color:#308080; '>[</span>k<span style='color:#308080; '>+</span><span style='color:#008c00; '>1</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>=</span> objectKeys<span style='color:#308080; '>[</span>k<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	        	k<span style='color:#308080; '>--</span><span style='color:#406080; '>;</span>
+	      	<span style='color:#406080; '>}</span>
+	      	objectVals<span style='color:#308080; '>[</span>k<span style='color:#308080; '>+</span><span style='color:#008c00; '>1</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>=</span> temp<span style='color:#406080; '>;</span>
+	      	objectKeys<span style='color:#308080; '>[</span>k<span style='color:#308080; '>+</span><span style='color:#008c00; '>1</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>=</span> temp2<span style='color:#406080; '>;</span>
+	      	<span style='color:#406080; '>}</span>
+	<span style='color:#406080; '>}</span>
+	 <span style='color:#200080; font-weight:bold; '>for</span><span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>var</span> j <span style='color:#308080; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#406080; '>;</span> j <span style='color:#308080; '>&lt;</span> objectVals<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>length</span><span style='color:#406080; '>;</span> j<span style='color:#308080; '>++</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+	  	sorted<span style='color:#308080; '>.</span>push<span style='color:#308080; '>(</span>objectKeys<span style='color:#308080; '>[</span>j<span style='color:#308080; '>]</span> <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>: </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> objectVals<span style='color:#308080; '>[</span>j<span style='color:#308080; '>]</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	 <span style='color:#406080; '>}</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		Converts the object into an array so that it can be easily sorted.
+	</div>
+</div>
+<div class="col-sm-3">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='exchangeTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'>arbCtrl<span style='color:#308080; '>.</span>displayExchange <span style='color:#308080; '>=</span> <span style='color:#200080; font-weight:bold; '>function</span><span style='color:#308080; '>(</span>choice<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	choice <span style='color:#308080; '>=</span> choice<span style='color:#308080; '>[</span><span style='color:#008c00; '>0</span><span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	arbCtrl<span style='color:#308080; '>.</span>rates <span style='color:#308080; '>=</span> associative<span style='color:#308080; '>[</span>choice<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span>firstChoice <span style='color:#308080; '>!=</span> <span style='color:#0f4d75; '>undefined</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		arbCtrl<span style='color:#308080; '>.</span>currency2<span style='color:#308080; '>.</span>splice<span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span><span style='color:#007d45; '>index</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>,</span> arbCtrl<span style='color:#308080; '>.</span>firstChoice<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+		arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>.</span>splice<span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span><span style='color:#007d45; '>index</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>,</span> arbCtrl<span style='color:#308080; '>.</span>firstChoice<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+		<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span>currency2<span style='color:#308080; '>[</span><span style='color:#008c00; '>0</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#800000; '>"</span><span style='color:#800000; '>"</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+			arbCtrl<span style='color:#308080; '>.</span>currency2<span style='color:#308080; '>.</span>splice<span style='color:#308080; '>(</span><span style='color:#008c00; '>0</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>1</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+		<span style='color:#406080; '>}</span>
+		<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>[</span><span style='color:#008c00; '>0</span><span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#800000; '>"</span><span style='color:#800000; '>"</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+			arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>.</span>splice<span style='color:#308080; '>(</span><span style='color:#008c00; '>0</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>1</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+		<span style='color:#406080; '>}</span>
+	<span style='color:#406080; '>}</span>
+	arbCtrl<span style='color:#308080; '>.</span>firstChoice <span style='color:#308080; '>=</span> choice<span style='color:#406080; '>;</span>
+	arbCtrl<span style='color:#308080; '>.</span><span style='color:#007d45; '>index</span> <span style='color:#308080; '>=</span> arbCtrl<span style='color:#308080; '>.</span>currency2<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>indexOf</span><span style='color:#308080; '>(</span>choice<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	arbCtrl<span style='color:#308080; '>.</span>currency2<span style='color:#308080; '>.</span>splice<span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span><span style='color:#007d45; '>index</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>1</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>.</span>splice<span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span><span style='color:#007d45; '>index</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>1</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+arbCtrl<span style='color:#308080; '>.</span>displayExchange2 <span style='color:#308080; '>=</span> <span style='color:#200080; font-weight:bold; '>function</span><span style='color:#308080; '>(</span>choice<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	choice <span style='color:#308080; '>=</span> choice<span style='color:#308080; '>[</span><span style='color:#008c00; '>0</span><span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	arbCtrl<span style='color:#308080; '>.</span>rates2 <span style='color:#308080; '>=</span> associative<span style='color:#308080; '>[</span>choice<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span>secondChoice <span style='color:#308080; '>!=</span> <span style='color:#0f4d75; '>undefined</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+		arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>.</span>splice<span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span><span style='color:#007d45; '>index</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>0</span><span style='color:#308080; '>,</span> arbCtrl<span style='color:#308080; '>.</span>secondChoice<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+		<span style='color:#200080; font-weight:bold; '>for</span> <span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>var</span> i <span style='color:#308080; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#406080; '>;</span> i <span style='color:#308080; '>&lt;</span> arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>length</span><span style='color:#406080; '>;</span> i<span style='color:#308080; '>++</span><span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
+			<span style='color:#200080; font-weight:bold; '>if</span> <span style='color:#308080; '>(</span>arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>[</span>i<span style='color:#308080; '>]</span> <span style='color:#308080; '>==</span> <span style='color:#800000; '>"</span><span style='color:#800000; '>"</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+				arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>.</span>splice<span style='color:#308080; '>(</span>i<span style='color:#308080; '>,</span> <span style='color:#008c00; '>1</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+			<span style='color:#406080; '>}</span>
+		<span style='color:#406080; '>}</span>
+	<span style='color:#406080; '>}</span>
+	arbCtrl<span style='color:#308080; '>.</span>secondChoice <span style='color:#308080; '>=</span> choice<span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> <span style='color:#007d45; '>index</span> <span style='color:#308080; '>=</span> arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>indexOf</span><span style='color:#308080; '>(</span>choice<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+	arbCtrl<span style='color:#308080; '>.</span>currency3<span style='color:#308080; '>.</span>splice<span style='color:#308080; '>(</span><span style='color:#007d45; '>index</span><span style='color:#308080; '>,</span> <span style='color:#008c00; '>1</span><span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+arbCtrl<span style='color:#308080; '>.</span>displayExchange3 <span style='color:#308080; '>=</span> <span style='color:#200080; font-weight:bold; '>function</span><span style='color:#308080; '>(</span>choice<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	choice <span style='color:#308080; '>=</span> choice<span style='color:#308080; '>[</span><span style='color:#008c00; '>0</span><span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	arbCtrl<span style='color:#308080; '>.</span>rates3 <span style='color:#308080; '>=</span> associative<span style='color:#308080; '>[</span>choice<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	arbCtrl<span style='color:#308080; '>.</span>thirdChoice <span style='color:#308080; '>=</span> choice<span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		Helps in displaying the currency options that can be picked for the calculator. If an option has been selected in the first select, then it will not be available in the second or third select.
+	</div>
+</div>
+<div class="col-sm-3">
+</div>
+<div class='row'>
+	<div class='col-sm-4'>
+		<div id='calcTitle' class='well'>
+			<pre style='color:#000020;background:#f6f8ff;'>arbCtrl<span style='color:#308080; '>.</span>calculateRate <span style='color:#308080; '>=</span> <span style='color:#200080; font-weight:bold; '>function</span><span style='color:#308080; '>(</span>start<span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> effectiveRate <span style='color:#308080; '>=</span> arbCtrl<span style='color:#308080; '>.</span>rates<span style='color:#308080; '>[</span>arbCtrl<span style='color:#308080; '>.</span>secondChoice<span style='color:#308080; '>]</span> <span style='color:#308080; '>*</span> arbCtrl<span style='color:#308080; '>.</span>rates2<span style='color:#308080; '>[</span>arbCtrl<span style='color:#308080; '>.</span>thirdChoice<span style='color:#308080; '>]</span> <span style='color:#308080; '>*</span> arbCtrl<span style='color:#308080; '>.</span>rates3<span style='color:#308080; '>[</span>arbCtrl<span style='color:#308080; '>.</span>firstChoice<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> totalRate <span style='color:#308080; '>=</span> start <span style='color:#308080; '>*</span> effectiveRate<span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> firstTotal <span style='color:#308080; '>=</span> start <span style='color:#308080; '>*</span> arbCtrl<span style='color:#308080; '>.</span>rates<span style='color:#308080; '>[</span>arbCtrl<span style='color:#308080; '>.</span>secondChoice<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> secondTotal <span style='color:#308080; '>=</span> firstTotal <span style='color:#308080; '>*</span> arbCtrl<span style='color:#308080; '>.</span>rates2<span style='color:#308080; '>[</span>arbCtrl<span style='color:#308080; '>.</span>thirdChoice<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	<span style='color:#200080; font-weight:bold; '>var</span> thirdTotal <span style='color:#308080; '>=</span> secondTotal <span style='color:#308080; '>*</span> arbCtrl<span style='color:#308080; '>.</span>rates3<span style='color:#308080; '>[</span>arbCtrl<span style='color:#308080; '>.</span>firstChoice<span style='color:#308080; '>]</span><span style='color:#406080; '>;</span>
+	$<span style='color:#308080; '>(</span><span style='color:#800000; '>'</span><span style='color:#1060b6; '>#rateInfo</span><span style='color:#800000; '>'</span><span style='color:#308080; '>)</span><span style='color:#308080; '>.</span>html<span style='color:#308080; '>(</span><span style='color:#800000; '>"</span><span style='color:#1060b6; '>Effective Rate: </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> effectiveRate <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>&lt;br></span><span style='color:#800000; '>"</span> 
+	<span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>Start: </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> start <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>firstChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>&lt;br></span><span style='color:#800000; '>"</span> 
+	<span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>End: </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> totalRate <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>firstChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>&lt;br></span><span style='color:#800000; '>"</span> 
+	<span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>firstChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> to </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>secondChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> rate: </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>rates<span style='color:#308080; '>[</span>arbCtrl<span style='color:#308080; '>.</span>secondChoice<span style='color:#308080; '>]</span> <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> (</span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> firstTotal <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>secondChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>)</span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>&lt;br></span><span style='color:#800000; '>"</span> 
+	<span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>secondChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> to </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>thirdChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> rate: </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>rates2<span style='color:#308080; '>[</span>arbCtrl<span style='color:#308080; '>.</span>thirdChoice<span style='color:#308080; '>]</span> <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> (</span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> secondTotal <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>thirdChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>)</span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>&lt;br></span><span style='color:#800000; '>"</span> 
+	<span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>thirdChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> to </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>firstChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> rate: </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>rates3<span style='color:#308080; '>[</span>arbCtrl<span style='color:#308080; '>.</span>firstChoice<span style='color:#308080; '>]</span> <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> (</span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> thirdTotal <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '> </span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>firstChoice <span style='color:#308080; '>+</span> <span style='color:#800000; '>"</span><span style='color:#1060b6; '>)</span><span style='color:#800000; '>"</span>
+	<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
+<span style='color:#406080; '>}</span>
+</pre>
+		</div>
+	</div>
+	<div class='col-sm-3'>
+		This function is called when the "calculate" button is clicked. It does the calculations and prints out the details.
 	</div>
 </div>
 <div id='bot' class='col-sm-12'></div>
