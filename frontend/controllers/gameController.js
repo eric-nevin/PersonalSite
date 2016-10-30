@@ -604,7 +604,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 				$("#tips").html("I lied");	
 			}
 			if (deaths == 101) {
-				$("#tips").html("This is way too many deaths. If anybody actually gets this far, here is a video walkthrough of this game https://www.youtube.com/watch?v=dQw4w9WgXcQ");	
+				$("#tips").html("This is way too many deaths. If anybody actually gets this far, here is a video walkthrough of this game <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>Tutorial</a>");	
 			}
 			var el = document.getElementById(html_id);
 			this.info.cx = $('#svg').width() / 4;
