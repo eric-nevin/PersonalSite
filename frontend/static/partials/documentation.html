@@ -1,3 +1,5 @@
+<body data-spy="scroll" data-target=".sideNavSpy" data-offset="100">
+	
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,21 +28,24 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div class='col-sm-3 sidebar'>
-	<ul id='sideNav'>
-		<li class="page-scroll"><a id='ball' href='#'>Ball Maze</a></li>
+<div class='col-sm-3 sidebar sideNavSpy'>
+	<ul id='sideNav' class='nav'>
+		<li class="page-scroll" id='ball'><a id='ball' href='#mazeTitle'>Ball Maze</a></li>
 		<ul id='ballMaze'>
-			<li id='update' class='page-scroll'><a href='#'>Update</a></li>
+			<li id='update' class='page-scroll'><a href='#updateTitle'>Update</a></li>
 			<ul id='udpateFunctions'>
-				<li id='maxSpeed' class='page-scroll'><a href='#'>Max Speed</a></li>
-				<li id='decelerate' class='page-scroll'><a href='#'>Decelerate</a></li>
-				<li id='wallBounce' class='page-scroll'><a href='#'>Wall Bounce</a></li>
-				<li id='keyPresses' class='page-scroll'><a href='#'>Key Presses</a></li>
-				<li id='sizeChange' class='page-scroll'><a href='#'>Size Change</a></li>
-				<li id='viewBox' class='page-scroll'><a href='#'>Teleport Animation</a></li>
+				<li id='maxSpeed' class='page-scroll'><a href='#maxspeedTitle'>Max Speed</a></li>
+				<li id='decelerate' class='page-scroll'><a href='#decelerateTitle'>Decelerate</a></li>
+				<li id='wallBounce' class='page-scroll'><a href='#wallbounceTitle'>Wall Bounce</a></li>
+				<li id='keyPresses' class='page-scroll'><a href='#keypressTitle'>Key Presses</a></li>
+				<li id='sizeChange' class='page-scroll'><a href='#sizeChangeTitle'>Size Change</a></li>
+				<li id='viewBox' class='page-scroll'><a href='#viewboxTitle'>Teleport Animation</a></li>
 			</ul>
 		</ul>
-		<li class="page-scroll"><a href='#'>Arbitrage</a></li>
+		<li id='arb' class="page-scroll"><a href='#arbTitle'>Arbitrage</a></li>
+		<ul id='arbDoc'>
+			<li id='apiCall' class='page-scroll'><a href='#apiCallTitle'>Update</a></li>
+		</ul>
 	</ul>
 </div>
 <br>
@@ -240,7 +245,7 @@
 		This function is called to move the view box when the users ball passes through a teleport.
 	</div>
 </div>
-<div id='arbTitle' class='row top'>
+<div id='arbTitle' class='row nontop'>
 	<div class='col-sm-4'></div>
 	<div class="col-sm-8 title">
 		<h2>Arbitration Calculator Doc</h2>
@@ -252,7 +257,7 @@
 </div>
 <div class='row'>
 	<div class='col-sm-4'>
-		<div id='jsonCallTitle' class='well'>
+		<div id='apiCallTitle' class='well'>
 			<pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>for</span> <span style='color:#308080; '>(</span><span style='color:#200080; font-weight:bold; '>var</span> i <span style='color:#308080; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#406080; '>;</span> i <span style='color:#308080; '>&lt;</span> arbCtrl<span style='color:#308080; '>.</span>currency<span style='color:#308080; '>.</span><span style='color:#200080; font-weight:bold; '>length</span><span style='color:#406080; '>;</span> i<span style='color:#308080; '>++</span><span style='color:#308080; '>)</span> <span style='color:#406080; '>{</span>
 	$<span style='color:#308080; '>.</span>getJSON<span style='color:#308080; '>(</span><span style='color:#800000; '>"</span><span style='color:#1060b6; '>http://api.fixer.io/latest?base=</span><span style='color:#800000; '>"</span> <span style='color:#308080; '>+</span> arbCtrl<span style='color:#308080; '>.</span>currency<span style='color:#308080; '>[</span>i<span style='color:#308080; '>]</span><span style='color:#308080; '>,</span> <span style='color:#200080; font-weight:bold; '>function</span><span style='color:#308080; '>(</span>data<span style='color:#308080; '>)</span><span style='color:#406080; '>{</span>
 		success<span style='color:#406080; '>:</span> pushValues<span style='color:#308080; '>(</span>data<span style='color:#308080; '>.</span>rates<span style='color:#308080; '>,</span> data<span style='color:#308080; '>.</span>base<span style='color:#308080; '>)</span><span style='color:#406080; '>;</span>
@@ -265,7 +270,8 @@
 		Initial series of JSON calls to fixer.io api. There is one call for every available currency.
 	</div>
 </div>
-
+<div id='bot' class='col-sm-12'></div>
+</body>
 
 
 

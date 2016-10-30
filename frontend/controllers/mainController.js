@@ -6,9 +6,10 @@
 
 function mainController($scope, $routeParams, $location) {
     var mainCtrl = this;
+    $('body').scrollspy({ target: '.sideNavSpy', offset: 100 });
     if ($routeParams.scrollTo != undefined) {
     	if ($routeParams.scrollTo == 'portfolio') {	    	 
-		    var target = $('#portfolioTitle');
+		    var target = $('#portfolio');
 		    var scrollToPosition = $(target).offset().top - 100;
 	        $('html,body').animate({
 	            scrollTop: scrollToPosition}, 500

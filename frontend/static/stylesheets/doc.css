@@ -1,3 +1,6 @@
+body {
+  position: relative;
+}
 .sidebar{
   border: 1px solid black;
   position: fixed;
@@ -5,6 +8,23 @@
   margin-top: 125px;
 }
 .top{
+	margin-top: 100px;
+	padding-bottom: 20px;
 	margin-left: 35px;
 	margin-right: 20px;
+}
+.nontop{
+	margin-left: 35px;
+	margin-right: 20px;
+	padding-bottom: 20px;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+	background-color: transparent;
+}
+li {
+    list-style-type: none;
+}
+#bot{
+	width: 100%;
+	padding-top: 30%;
 }
