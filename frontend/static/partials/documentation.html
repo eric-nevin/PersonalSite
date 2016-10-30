@@ -28,8 +28,19 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div class='col-sm-3 sidebar sideNavSpy'>
+
+<br>
+<div id="page-hide" class='row title topDocTitle'>
+		<div class='col-sm-1'></div>
+		<div class="col-sm-10">
+			<h2>Documenation</h2>
+			<small class='trans'>Documentation for the projects displayed on this website.</small>
+		</div>
+		<div class='col-sm-1'></div>
+	</div>
+	<div id='sideFix' class='col-sm-3 sidebar sideNavSpy'>
 	<ul id='sideNav' class='nav'>
+		<li class="hidden" id='topHide'><a href="#page-hide"></a></li>
 		<li class="page-scroll" id='ball'><a id='ball' href='#mazeTitle'>Ball Maze</a></li>
 		<ul id='ballMaze'>
 			<li id='update' class='page-scroll'><a href='#updateTitle'>Update</a></li>
@@ -48,10 +59,9 @@
 		</ul>
 	</ul>
 </div>
-<br>
-<div id='mazeTitle' class='row top'>
+<div id='mazeTitle' class='row topDoc'>
 	<div class='col-sm-4'></div>
-	<div class="col-sm-8 title">
+	<div class="col-sm-8 titleDoc">
 		<h2>Ball Maze Doc</h2>
 		<small class='trans'>Below are all of the functions that make up the ball maze game and what they do.</small>
 	</div>
@@ -247,7 +257,7 @@
 </div>
 <div id='arbTitle' class='row nontop'>
 	<div class='col-sm-4'></div>
-	<div class="col-sm-8 title">
+	<div class="col-sm-8 titleDoc">
 		<h2>Arbitration Calculator Doc</h2>
 		<small class='trans'>Below are all of the functions that make up the arbitrage calculator and what they do.</small>
 	</div>
@@ -271,6 +281,7 @@
 	</div>
 </div>
 <div id='bot' class='col-sm-12'></div>
+
 </body>
 
 

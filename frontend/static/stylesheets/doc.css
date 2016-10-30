@@ -3,10 +3,11 @@ body {
 }
 .sidebar{
   border: 1px solid black;
-  position: fixed;
+  position: absolute;
   margin-left: 5%;
-  margin-top: 125px;
+  margin-top: 20px;
 }
+
 .top{
 	margin-top: 100px;
 	padding-bottom: 20px;
@@ -27,4 +28,18 @@ li {
 #bot{
 	width: 100%;
 	padding-top: 30%;
+}
+.titleDoc{
+	background: #63498b;
+	color: white;
+}
+.topDoc{
+	padding-bottom: 20px;
+	margin-left: 35px;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+.topDocTitle{
+	margin-top: 80px;
+	padding-bottom: 20px;
 }

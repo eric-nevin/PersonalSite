@@ -6,10 +6,24 @@
 
 function docController($scope, $routeParams, $location) {
     var docCtrl = this;
+    $(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+        if (scroll > 100) {
+            $(".sidebar").css("position", "fixed");
+            $(".sidebar").css("margin-top", "-90px");
+        } else {
+            $(".sidebar").css("position", "absolute");
+            $(".sidebar").css("margin-top", "20px");
+        }
+    });
     $('body').scrollspy({ target: '.sideNavSpy', offset: 100 });
     $('.sideNavSpy').on('activate.bs.scrollspy', function (target) {
         var tar = target.target.id;
         //  ball, update, maxSpeed, decelerate, wallBounce, keyPresses, sizeChange, viewBox
+        if (tar == 'topHide') {
+            $('#ballMaze').hide();
+            $('#ball').css("background-color", "transparent");
+        }
         if (tar == 'ball') {
             $('#ballMaze').show();
             $('#ball').css("background-color", "#dddddd");
