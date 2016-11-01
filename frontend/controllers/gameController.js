@@ -1087,6 +1087,21 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	} else {
 		$('#touchKeys').hide();
 	}
+	$(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+        if (scroll < 100) {
+	        $('#mainNav').slideDown();
+	    } else {
+	    	if ($('#mainNav').is(":visible") == true ) {
+		        clearTimeout(gameCtrl.headerTimeout);
+		        gameCtrl.headerTimeout = setTimeout(function(){
+		        	$('#mainNav').slideUp();
+		        	console.log('here');
+		        }, 500);
+		    }
+	    }
+        
+    });
 	//test area
 		
 	// test area
