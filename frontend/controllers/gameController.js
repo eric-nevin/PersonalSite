@@ -837,6 +837,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#up').css('box-shadow', 'none');
 		$('#up').css('-webkit-box-shadow', 'none');
 		$('#up').css('-moz-box-shadow', 'none');
+		$('#up').css('background-color', 'black');
 	})
 	$('#down').on( "mousedown touchstart", function(e){
 		e.preventDefault();
@@ -845,6 +846,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#down').css('box-shadow', 'none');
 		$('#down').css('-webkit-box-shadow', 'none');
 		$('#down').css('-moz-box-shadow', 'none');
+		$('#down').css('background-color', 'black');
 	})
 	$('#left').on( "mousedown touchstart", function(e){
 		e.preventDefault();
@@ -853,6 +855,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#left').css('box-shadow', 'none');
 		$('#left').css('-webkit-box-shadow', 'none');
 		$('#left').css('-moz-box-shadow', 'none');
+		$('#left').css('background-color', 'black');
 	})
 	$('#right').on( "mousedown touchstart", function(e){
 		e.preventDefault();
@@ -861,6 +864,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#right').css('box-shadow', 'none');
 		$('#right').css('-webkit-box-shadow', 'none');
 		$('#right').css('-moz-box-shadow', 'none');
+		$('#right').css('background-color', 'black');
 	})
 	$('#up').on( "mouseup touchend", function(e){
 		e.preventDefault();
@@ -869,6 +873,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#up').css('box-shadow', 'inset 0 0 10px #000000');
 		$('#up').css('-webkit-box-shadow', 'inset 0 0 10px #000000');
 		$('#up').css('-moz-box-shadow', 'inset 0 0 10px #000000');
+		$('#up').css('background-color', 'lightgrey');
 	})
 	$('#down').on( "mouseup touchend", function(e){
 		e.preventDefault();
@@ -877,6 +882,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#down').css('box-shadow', 'inset 0 0 10px #000000');
 		$('#down').css('-webkit-box-shadow', 'inset 0 0 10px #000000');
 		$('#down').css('-moz-box-shadow', 'inset 0 0 10px #000000');
+		$('#down').css('background-color', 'lightgrey');
 	})
 	$('#left').on( "mouseup touchend", function(e){
 		e.preventDefault();
@@ -885,6 +891,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#left').css('box-shadow', 'inset 0 0 10px #000000');
 		$('#left').css('-webkit-box-shadow', 'inset 0 0 10px #000000');
 		$('#left').css('-moz-box-shadow', 'inset 0 0 10px #000000');
+		$('#left').css('background-color', 'lightgrey');
 	})
 	$('#right').on( "mouseup touchend", function(e){
 		e.preventDefault();
@@ -893,6 +900,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#right').css('box-shadow', 'inset 0 0 10px #000000');
 		$('#right').css('-webkit-box-shadow', 'inset 0 0 10px #000000');
 		$('#right').css('-moz-box-shadow', 'inset 0 0 10px #000000');
+		$('#right').css('background-color', 'lightgrey');
 	})
 
 	// <<<needed for key movements
@@ -1085,7 +1093,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	if (window.mobileAndTabletcheck() == true) {
 		$('#touchKeys').show();
 	} else {
-		$('#touchKeys').hide();
+		$('#touchKeys').show();
 	}
 	$(window).scroll(function (event) {
         var scroll = $(window).scrollTop();
