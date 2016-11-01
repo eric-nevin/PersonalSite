@@ -9,15 +9,67 @@ function docController($scope, $routeParams, $location) {
     var size = $('body').width();
     if (size < 768) {
         $('.topDocTitle').css("margin-top", "155px");
+        $('#sideFix').hide();
+        $('.topDocTitle').css("padding-left", "20px");
+        $('.topDoc').css("padding-bottom", "0px");
+        $('.topDoc').css("margin-left", "0px");
+        $('.topDoc').css("margin-right", "0px");
+        $('.topDoc').css("margin-top", "0px");
+        $('.headerTitle').css("margin-top", "-1px");
+        $('.titleDoc').css("margin-left", "0px");
+        $('.titleDoc').css("padding-top", "10px");
+        $('.summary').css("margin-left", "20px");
+        $('.nontop').css("margin-left", "0px");
+        $('.nontop').css("margin-right", "0px");
+        $('.nontop').css("padding-bottom", "0px");
     } else {
         $('.topDocTitle').css("margin-top", "80px");
+        $('#sideFix').show();
+        $('.topDocTitle').css("padding-left", "0px");
+        $('.topDoc').css("padding-bottom", "20px");
+        $('.topDoc').css("margin-left", "20px");
+        $('.topDoc').css("margin-right", "10px");
+        $('.topDoc').css("margin-top", "20px");
+        $('.headerTitle').css("margin-top", ".67em");
+        $('.titleDoc').css("margin-left", "5px");
+        $('.titleDoc').css("padding-top", "0px");
+        $('.summary').css("margin-left", "0px");
+        $('.nontop').css("margin-left", "20px");
+        $('.nontop').css("margin-right", "10px");
+        $('.nontop').css("padding-bottom", "20px");
     }
     $(window).resize(function(e) {
         var size = $('body').width();
         if (size < 768) {
             $('.topDocTitle').css("margin-top", "155px");
+            $('#sideFix').hide();
+            $('.topDocTitle').css("padding-left", "20px");
+            $('.topDoc').css("padding-bottom", "0px");
+            $('.topDoc').css("margin-left", "0px");
+            $('.topDoc').css("margin-right", "0px");
+            $('.topDoc').css("margin-top", "0px");
+            $('.headerTitle').css("margin-top", "-1px");
+            $('.titleDoc').css("margin-left", "0px");
+            $('.titleDoc').css("padding-top", "10px");
+            $('.summary').css("margin-left", "20px");
+            $('.nontop').css("margin-left", "0px");
+            $('.nontop').css("margin-right", "0px");
+            $('.nontop').css("padding-bottom", "0px");
         } else {
             $('.topDocTitle').css("margin-top", "80px");
+            $('#sideFix').show();
+            $('.topDocTitle').css("padding-left", "0px");
+            $('.topDoc').css("padding-bottom", "20px");
+            $('.topDoc').css("margin-left", "20px");
+            $('.topDoc').css("margin-right", "10px");
+            $('.topDoc').css("margin-top", "20px");
+            $('.headerTitle').css("margin-top", ".67em");
+            $('.titleDoc').css("margin-left", "5px");
+            $('.titleDoc').css("padding-top", "0px");
+            $('.summary').css("margin-left", "0px");
+            $('.nontop').css("margin-left", "20px");
+            $('.nontop').css("margin-right", "10px");
+            $('.nontop').css("padding-bottom", "20px");
         }
     });
     $(window).scroll(function (event) {

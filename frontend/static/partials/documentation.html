@@ -67,7 +67,7 @@
 <div id='mazeTitle' class='row topDoc'>
 	<div class='col-sm-3'></div>
 	<div class="col-sm-8 titleDoc">
-		<h2>Ball Maze Doc</h2>
+		<h2 class='headerTitle'>Ball Maze Doc</h2>
 		<small class='trans'>Below are all of the functions that make up the ball maze game and what they do.</small>
 	</div>
 <div class='col-sm-1'></div>
@@ -83,7 +83,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		This function is called every 10 milliseconds. It contains the meat of the physics of the game. The functions below are the one's called within the update function.
 	</div>
 </div>
@@ -113,7 +113,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		This function is called to limit the balls max velocity. If the current velocity of the ball on the x or y axis surpasses the max velocity, it is made equal to the max velocity. The "speedUp" variable allows for a powerup to increase max velocity.
 	</div>
 </div>
@@ -137,7 +137,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		This function is called to steadily drop the ball's speed. If the ball's speed is anything but zero, it's speed is dropped by "decelRate".
 	</div>
 </div>
@@ -168,7 +168,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		This function is called to check if the ball has hit an outer border. If the ball's edge is equal to or past the border, it's the location is set equal to the border and its speed is reversed and lessened by the amount of "bounciness" the border has.
 	</div>
 </div>
@@ -204,7 +204,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		This function is called to grab the key presses for movemont. If the key for any direction is true, then acceleration is added to the ball's velocity. The if checks with two key presses are used for horizontal movement. 
 	</div>
 </div>
@@ -224,7 +224,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		This function checks if the inputted variable is active. If it is, it makes the ball larger. The variable is activated when the user passes over a blue square.
 	</div>
 </div>
@@ -256,14 +256,14 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		This function is called to move the view box when the users ball passes through a teleport.
 	</div>
 </div>
 <div id='arbTitle' class='row nontop'>
 	<div class='col-sm-3'></div>
 	<div class="col-sm-8 titleDoc">
-		<h2>Arbitration Calculator Doc</h2>
+		<h2 class='headerTitle'>Arbitration Calculator Doc</h2>
 		<small class='trans'>Below are all of the functions that make up the arbitrage calculator and what they do.</small>
 	</div>
 <div class='col-sm-1'></div>
@@ -281,7 +281,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		Initial series of JSON calls to fixer.io api. There is one call for every available currency.
 	</div>
 </div>
@@ -300,7 +300,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		Helper function called everytime one of the API calls goes through. Adds new values to an obejct. Once all of the API calls are done, it calls the Triangular Arbitrage function.
 	</div>
 </div>
@@ -347,7 +347,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		This is a series of calculations that concludes in finding the best case of triangular arbitrage and printing it at the top of the page.
 	</div>
 </div>
@@ -385,7 +385,7 @@
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		Converts the object into an array so that it can be easily sorted.
 	</div>
 </div>
@@ -435,7 +435,7 @@ arbCtrl<span style='color:#308080; '>.</span>displayExchange3 <span style='color
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		Helps in displaying the currency options that can be picked for the calculator. If an option has been selected in the first select, then it will not be available in the second or third select.
 	</div>
 </div>
@@ -461,7 +461,7 @@ arbCtrl<span style='color:#308080; '>.</span>displayExchange3 <span style='color
 </pre>
 		</div>
 	</div>
-	<div class='col-sm-3'>
+	<div class='col-sm-3 summary'>
 		This function is called when the "calculate" button is clicked. It does the calculations and prints out the details.
 	</div>
 </div>
