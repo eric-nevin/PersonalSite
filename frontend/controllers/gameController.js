@@ -1092,6 +1092,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	};
 	if (window.mobileAndTabletcheck() == true) {
 		$('#touchKeys').show();
+		$('#tips').hide();
 	} else {
 		$('#touchKeys').hide();
 	}
@@ -1104,8 +1105,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		        clearTimeout(gameCtrl.headerTimeout);
 		        gameCtrl.headerTimeout = setTimeout(function(){
 		        	$('#mainNav').slideUp();
-		        	console.log('here');
-		        }, 500);
+		        }, 3000);
 		    }
 	    }
         
