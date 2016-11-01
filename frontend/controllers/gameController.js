@@ -1093,7 +1093,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	if (window.mobileAndTabletcheck() == true) {
 		$('#touchKeys').show();
 	} else {
-		$('#touchKeys').show();
+		$('#touchKeys').hide();
 	}
 	$(window).scroll(function (event) {
         var scroll = $(window).scrollTop();
