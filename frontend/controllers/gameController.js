@@ -9,6 +9,9 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	$scope.$on("$destroy", function(){
 	    $interval.cancel(mainInterval);
 	});
+	var SVGwid = $('#svg').width();
+	var SVGhei = $('#svg').height();
+	var controls = true;
 	var keyPressed = [];
 	var circles = {};
 	var hitpoints = {};
@@ -122,8 +125,8 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		// 32 high, 60 wide
 		var count = 0;
 		var html_id = 100;
-		var wid = $('#svg').width();
-		var hei = $('#svg').height();
+		var wid = SVGwid;
+		var hei = SVGhei;
 		for (var i = 0; i < wid; i = i + size) {
 			for (var j = 0; j < hei; j = j + size) {
 				var type = 0;
@@ -477,15 +480,15 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 			return false;
 		}
 		function wallBounce(x, y, speedx, speedy, r, bounciness) {
-			if (x + r > ($('#svg').width())) {
-				x = ($('#svg').width()) - r;
+			if (x + r > (SVGwid)) {
+				x = SVGwid - r;
 				speedx *= -bounciness;
 			} else if (x - r < 0) {
 				x = r;
 				speedx *= -bounciness;
 			}
-			if (y + r > $('#svg').height()) {
-				y = $('#svg').height() - r;
+			if (y + r > SVGhei) {
+				y = SVGhei - r;
 				speedy *= -bounciness;
 			} else if (y - r < 0) {
 				y = r;
@@ -607,8 +610,8 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 				$("#tips").html("This is way too many deaths. If anybody actually gets this far, here is a video walkthrough of this game <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>Tutorial</a>");	
 			}
 			var el = document.getElementById(html_id);
-			this.info.cx = $('#svg').width() / 4;
-			this.info.cy = $('#svg').height() / 2;
+			this.info.cx = SVGwid / 4;
+			this.info.cy = SVGhei / 2;
 			this.info.velocity.x = 0;
 			this.info.velocity.y = 0;
 			this.info.r = 10;
@@ -807,7 +810,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		// creates users circle in the middle of the map with its new id
 		// params: x location, y location, radius, id, x velocity, y velocity
 		setTimeout(function() {
-			playground.createNewCircle($('#svg').width() / 4, $('#svg').height()/ 2, 10, circleId, 0, 0);	
+			playground.createNewCircle(SVGwid / 4, SVGhei / 2, 10, circleId, 0, 0);	
 		}, 1000);
 	}
 	// end of class playground
@@ -828,6 +831,63 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		keyPressed[e.keyCode] = false;
 		keyDownTextField();
 	}
+	$('#up').on( "mousedown touchstart", function(e){
+		keyPressed[38] = true;
+		$('#up').css('opacity', '0.7');
+		$('#up').css('box-shadow', 'none');
+		$('#up').css('-webkit-box-shadow', 'none');
+		$('#up').css('-moz-box-shadow', 'none');
+	})
+	$('#down').on( "mousedown touchstart", function(e){
+		keyPressed[40] = true;
+		$('#down').css('opacity', '0.7');
+		$('#down').css('box-shadow', 'none');
+		$('#down').css('-webkit-box-shadow', 'none');
+		$('#down').css('-moz-box-shadow', 'none');
+	})
+	$('#left').on( "mousedown touchstart", function(e){
+		keyPressed[37] = true;
+		$('#left').css('opacity', '0.7');
+		$('#left').css('box-shadow', 'none');
+		$('#left').css('-webkit-box-shadow', 'none');
+		$('#left').css('-moz-box-shadow', 'none');
+	})
+	$('#right').on( "mousedown touchstart", function(e){
+		keyPressed[39] = true;
+		$('#right').css('opacity', '0.7');
+		$('#right').css('box-shadow', 'none');
+		$('#right').css('-webkit-box-shadow', 'none');
+		$('#right').css('-moz-box-shadow', 'none');
+	})
+	$('#up').on( "mouseup touchend", function(e){
+		keyPressed[38] = false;
+		$('#up').css('opacity', '0.5');
+		$('#up').css('box-shadow', 'inset 0 0 10px #000000');
+		$('#up').css('-webkit-box-shadow', 'inset 0 0 10px #000000');
+		$('#up').css('-moz-box-shadow', 'inset 0 0 10px #000000');
+	})
+	$('#down').on( "mouseup touchend", function(e){
+		keyPressed[40] = false;
+		$('#down').css('opacity', '0.5');
+		$('#down').css('box-shadow', 'inset 0 0 10px #000000');
+		$('#down').css('-webkit-box-shadow', 'inset 0 0 10px #000000');
+		$('#down').css('-moz-box-shadow', 'inset 0 0 10px #000000');
+	})
+	$('#left').on( "mouseup touchend", function(e){
+		keyPressed[37] = false;
+		$('#left').css('opacity', '0.5');
+		$('#left').css('box-shadow', 'inset 0 0 10px #000000');
+		$('#left').css('-webkit-box-shadow', 'inset 0 0 10px #000000');
+		$('#left').css('-moz-box-shadow', 'inset 0 0 10px #000000');
+	})
+	$('#right').on( "mouseup touchend", function(e){
+		keyPressed[39] = false;
+		$('#right').css('opacity', '0.5');
+		$('#right').css('box-shadow', 'inset 0 0 10px #000000');
+		$('#right').css('-webkit-box-shadow', 'inset 0 0 10px #000000');
+		$('#right').css('-moz-box-shadow', 'inset 0 0 10px #000000');
+	})
+
 	// <<<needed for key movements
 	$("#gameInfo").hover(function() {
         $("#gameInfo").html("<span style='color: black'>Black Square: Regular Barrier| </span><span style='color: grey'>Grey Square: Death!| </span><span style='color: orange'>Orange Square: Extra Bouncy| </span><span style='color: red'>Red Square: Speed Powerup| </span><span style='color: blue'>Blue Square: Size Powerup| </span><span style='color: white; text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;'>Red Outline: Teleport Start| </span><span style='color: white; text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue, 1px 1px 0 blue;'>Blue Outline: Teleport End </span></div>");
@@ -986,6 +1046,37 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	// the important loop that starts all the game functionality
 	mainInterval = $interval(playground.loop, 10);
 	$('#editTrue').hide();
+	var size = $('body').width();
+	var sizeHeight = $('body').height();
+	if (size < 768) {
+        $('#svg').css("width", size + "px");
+        $('#svg').css("height", sizeHeight + "px");
+        $('#deathCount').css('margin-top', "190px");
+        $('#touchKeys').show();
+        controls = false;
+    } else {
+        $('#svg').css("width", size + "px");
+        $('#svg').css("height", sizeHeight + "px");
+        $('#deathCount').css('margin-top', "120px");
+        $('#touchKeys').hide();
+        controls = true;
+    }
+    $(window).resize(function(e) {
+        var size = $('body').width();
+        if (size < 768) {
+            $('#svg').css("width", size + "px");
+            $('#svg').css("height", sizeHeight + "px");
+            $('#deathCount').css('margin-top', "190px");
+    		$('#touchKeys').show();
+            controls = false;
+        } else {
+            $('#svg').css("width", size + "px");
+            $('#svg').css("height", sizeHeight + "px");
+            $('#deathCount').css('margin-top', "120px");
+    		$('#touchKeys').hide();
+            controls = true;
+        }
+    });
 	//test area
 		
 	// test area
