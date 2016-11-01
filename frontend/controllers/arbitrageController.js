@@ -6,6 +6,20 @@
 
 function arbitrageController($scope, $routeParams, $location) {
 	var arbCtrl = this;
+	var size = $('body').width();
+    if (size < 768) {
+        $('.topArb').css("margin-top", "175px");
+    } else {
+        $('.topArb').css("margin-top", "100px");
+    }
+	$(window).resize(function(e) {
+        var size = $('body').width();
+        if (size < 768) {
+            $('.topArb').css("margin-top", "175px");
+        } else {
+            $('.topArb').css("margin-top", "100px");
+        }
+    });
 	var associative = {};
 	var profitable = [];
 	arbCtrl.currency = ['AUD', 'BGN', 'BRL', 'CAD', 'CHF', 'CNY', 'CZK', 'DKK', 'GBP', 'HKD', 'HRK', 'HUF', 'IDR', 'ILS', 'INR', 'JPY', 'KRW', 'MXN', 'MYR', 'NOK', 'NZD', 'PHP', 'PLN', 'RON', 'RUB', 'SEK', 'SGD', 'THB', 'TRY', 'USD', 'ZAR'];

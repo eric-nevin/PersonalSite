@@ -6,6 +6,7 @@
 
 function mainController($scope, $routeParams, $location) {
     var mainCtrl = this;
+    
     $('body').scrollspy({ target: '.sideNavSpy', offset: 100 });
     if ($routeParams.scrollTo != undefined) {
     	if ($routeParams.scrollTo == 'portfolio') {	    	 

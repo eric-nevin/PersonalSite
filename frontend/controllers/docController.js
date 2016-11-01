@@ -6,6 +6,20 @@
 
 function docController($scope, $routeParams, $location) {
     var docCtrl = this;
+    var size = $('body').width();
+    if (size < 768) {
+        $('.topDocTitle').css("margin-top", "155px");
+    } else {
+        $('.topDocTitle').css("margin-top", "80px");
+    }
+    $(window).resize(function(e) {
+        var size = $('body').width();
+        if (size < 768) {
+            $('.topDocTitle').css("margin-top", "155px");
+        } else {
+            $('.topDocTitle').css("margin-top", "80px");
+        }
+    });
     $(window).scroll(function (event) {
         var scroll = $(window).scrollTop();
         if (scroll > 100) {
