@@ -832,6 +832,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		keyDownTextField();
 	}
 	$('#up').on( "mousedown touchstart", function(e){
+		e.preventDefault();
 		keyPressed[38] = true;
 		$('#up').css('opacity', '0.7');
 		$('#up').css('box-shadow', 'none');
@@ -839,6 +840,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#up').css('-moz-box-shadow', 'none');
 	})
 	$('#down').on( "mousedown touchstart", function(e){
+		e.preventDefault();
 		keyPressed[40] = true;
 		$('#down').css('opacity', '0.7');
 		$('#down').css('box-shadow', 'none');
@@ -846,6 +848,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#down').css('-moz-box-shadow', 'none');
 	})
 	$('#left').on( "mousedown touchstart", function(e){
+		e.preventDefault();
 		keyPressed[37] = true;
 		$('#left').css('opacity', '0.7');
 		$('#left').css('box-shadow', 'none');
@@ -853,6 +856,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#left').css('-moz-box-shadow', 'none');
 	})
 	$('#right').on( "mousedown touchstart", function(e){
+		e.preventDefault();
 		keyPressed[39] = true;
 		$('#right').css('opacity', '0.7');
 		$('#right').css('box-shadow', 'none');
@@ -860,6 +864,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#right').css('-moz-box-shadow', 'none');
 	})
 	$('#up').on( "mouseup touchend", function(e){
+		e.preventDefault();
 		keyPressed[38] = false;
 		$('#up').css('opacity', '0.5');
 		$('#up').css('box-shadow', 'inset 0 0 10px #000000');
@@ -867,6 +872,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#up').css('-moz-box-shadow', 'inset 0 0 10px #000000');
 	})
 	$('#down').on( "mouseup touchend", function(e){
+		e.preventDefault();
 		keyPressed[40] = false;
 		$('#down').css('opacity', '0.5');
 		$('#down').css('box-shadow', 'inset 0 0 10px #000000');
@@ -874,6 +880,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#down').css('-moz-box-shadow', 'inset 0 0 10px #000000');
 	})
 	$('#left').on( "mouseup touchend", function(e){
+		e.preventDefault();
 		keyPressed[37] = false;
 		$('#left').css('opacity', '0.5');
 		$('#left').css('box-shadow', 'inset 0 0 10px #000000');
@@ -881,6 +888,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		$('#left').css('-moz-box-shadow', 'inset 0 0 10px #000000');
 	})
 	$('#right').on( "mouseup touchend", function(e){
+		e.preventDefault();
 		keyPressed[39] = false;
 		$('#right').css('opacity', '0.5');
 		$('#right').css('box-shadow', 'inset 0 0 10px #000000');
