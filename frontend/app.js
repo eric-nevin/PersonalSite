@@ -30,6 +30,12 @@ var myApp = angular.module('myApp', ["ngRoute",
 			controllerAs: 'docCtrl',
 			templateUrl: 'static/partials/documentation.html'
 		})
+		.when('/newProject',
+		{
+			controller: 'newProjectController',
+			controllerAs: 'newProCtrl',
+			templateUrl: 'static/partials/newProject.html'
+		})
 		.otherwise({
 			redirectTo: "/"
 		});

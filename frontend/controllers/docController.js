@@ -83,6 +83,7 @@ function docController($scope, $routeParams, $location) {
         }
     });
     $('body').scrollspy({ target: '.sideNavSpy', offset: 100 });
+    console.log('here');
     $('.sideNavSpy').on('activate.bs.scrollspy', function (target) {
         var tar = target.target.id;
         if (tar == 'topHide') {

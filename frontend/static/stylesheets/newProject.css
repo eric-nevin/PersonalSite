@@ -1,0 +1,7 @@
+#newsvg{
+	width: 1200px;
+	height: 600px;
+	display: block;
+	border: black 1pt solid;
+	margin: 50px auto;
+}

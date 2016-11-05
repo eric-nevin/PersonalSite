@@ -29,7 +29,6 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	var squareDist = {45: 14.142, 44: 13.902, 43: 13.673, 42: 13.456, 41: 13.25, 40: 13.054, 39: 12.868, 38: 12.69, 37: 12.521, 36: 12.361, 35: 12.208, 34: 12.062, 33: 11.924, 32: 11.792, 31: 11.666, 30: 11.547, 29: 11.434, 28: 11.326, 27: 11.223, 26: 11.126, 25: 11.034, 24: 10.946, 23: 10.864, 22: 10.785, 21: 10.711, 20: 10.642, 19: 10.576, 18: 10.515, 17: 10.457, 16: 10.403, 15: 10.353, 14: 10.306, 13: 10.263, 12: 10.223, 11: 10.187, 10: 10.154, 9: 10.125, 8: 10.098, 7: 10.075, 6: 10.055, 5: 10.038, 4: 10.024, 3: 10.014, 2: 10.006, 1: 10.002, 0: 10};
 	var tips = [367,309,505,185,617,1162];
 	var tipSpot = 0;
-
 	function BackSquare(size) {
 		var makeSVG = function(tag, attrs) {
 			var el = document.createElementNS('http://www.w3.org/2000/svg', tag);
@@ -464,6 +463,18 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 			} else if (vely < -maxspeed) {
 				vely = -maxspeed;
 			}
+			if (velx < 0.001 && velx > 0) {
+				velx = 0;
+			}
+			if (velx > -0.001 && velx < 0) {
+				velx = 0;
+			}
+			if (vely < 0.001 && vely > 0) {
+				vely = 0;
+			}
+			if (vely > -0.001 && vely < 0) {
+				vely = 0;
+			}
 			return [velx, vely];
 		}
 		function decelerate(speedx, speedy, decelRate) {
@@ -524,7 +535,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 			if (change == 0){
 				userBall.setAttribute('r', 20);
 			} else {
-				userBall.setAttribute('r', 10);
+				userBall.setAttribute('r', 9.9);
 			}
 		}
 		function viewboxTransition(x, y, x2, y2) {
@@ -613,10 +624,13 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 			this.info.cy = SVGhei / 2;
 			this.info.velocity.x = 0;
 			this.info.velocity.y = 0;
-			this.info.r = 10;
+			this.info.r = 9.9;
 			el.setAttribute('cx', this.info.cx);
 			el.setAttribute('cy', this.info.cy);
 			el.setAttribute('r', this.info.r);
+			$interval.cancel(mainInterval);
+			$('#reset').show();
+			$('#resetButton').show()
 		}
 		// update function does bulk of calculations. Is called by playground.loop
 		this.update = function(time, maxspeed, acceleration, deceleration, bounciness) {
@@ -743,11 +757,11 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 					if (powerup['size'] != null) {
 						sizeChange(0);
 						var that = this;
-						if (this.info.r == 10) {
+						if (this.info.r == 9.9) {
 							this.info.r = 20;
 							setTimeout(function(){
 								sizeChange(1);
-								that.info.r = 10;
+								that.info.r = 9.9;
 							}, 10000);
 						}
 					}
@@ -809,7 +823,7 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 		// creates users circle in the middle of the map with its new id
 		// params: x location, y location, radius, id, x velocity, y velocity
 		setTimeout(function() {
-			playground.createNewCircle(SVGwid / 4, SVGhei / 2, 10, circleId, 0, 0);	
+			playground.createNewCircle(SVGwid / 4, SVGhei / 2, 9.9, circleId, 0, 0);	
 		}, 1000);
 	}
 	// end of class playground
@@ -1061,6 +1075,9 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	// the important loop that starts all the game functionality
 	mainInterval = $interval(playground.loop, 10);
 	$('#editTrue').hide();
+	$('#reset').hide();
+	$('#resetButton').hide()
+	$('#resetButton').css( 'cursor', 'pointer' );
 	var size = $('body').width();
 	var sizeHeight = $('body').height();
 	if (size < 768) {
@@ -1085,6 +1102,11 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
             $('#deathCount').css('margin-top', "120px");
         }
     });
+    $('#resetButton').click(function(){
+    	mainInterval = $interval(playground.loop, 10);
+    	$('#reset').hide();
+		$('#resetButton').hide()
+    });
     window.mobileAndTabletcheck = function() {
   		var check = false;
   		(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
@@ -1096,16 +1118,16 @@ function gameController($scope, $routeParams, $location, $route, $interval) {
 	} else {
 		$('#touchKeys').hide();
 	}
-	$(window).scroll(function (event) {
+	$(window).bind('scroll', function (event) {
         var scroll = $(window).scrollTop();
         if (scroll < 100) {
-	        $('#mainNav').slideDown();
+	        $('#mainNa').slideDown();
 	    } else {
-	    	if ($('#mainNav').is(":visible") == true ) {
+	    	if ($('#mainNa').is(":visible") == true ) {
 		        clearTimeout(gameCtrl.headerTimeout);
 		        gameCtrl.headerTimeout = setTimeout(function(){
-		        	$('#mainNav').slideUp();
-		        }, 3000);
+		        	$('#mainNa').slideUp();
+		        }, 1000);
 		    }
 	    }
         
