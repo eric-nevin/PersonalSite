@@ -90,7 +90,7 @@
 #resetButton{
 	background-color: blue;
 	border-radius: 10px;
-	position: absolute;
+	position: fixed;
 	left: 45%;
 	top: 50%;
 	width: 100px;
